@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
-  background-color: ${({ theme }) => theme.colors.hBg};
+  /* background-color: ${({ theme }) => theme.colors.hBg}; */
   width: 100%;
   display: flex;
   height: 48px;

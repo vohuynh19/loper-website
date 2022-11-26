@@ -1,16 +1,15 @@
-import { Avatar, Tag } from "antd";
+import { Avatar, Space, Tag } from "antd";
 import { FC } from "react";
 import { uuid } from "@utils/functions/uuid";
 
 import {
-  ContributorIcon,
-  ContributorWrapper,
+  UserWrapper,
+  UserTitle,
   Desc,
-  DonatorIcon,
-  DonatorWrapper,
   HeadWrapper,
   Title,
   Wrapper,
+  StyledButton,
 } from "./styled";
 
 type QuestCardProps = {
@@ -19,8 +18,8 @@ type QuestCardProps = {
 };
 
 const QuestCard: FC<QuestCardProps> = ({
-  contributorList = [],
-  donatorList = [],
+  contributorList = [{}, {}, {}],
+  donatorList = [{}, {}, {}],
 }) => {
   return (
     <Wrapper>
@@ -32,22 +31,28 @@ const QuestCard: FC<QuestCardProps> = ({
       <Desc>
         Issue in [BuilderIO/qwik](https://github.com/BuilderIO/qwik) found in
         #51218 `Error: start` ``` Req #6872 - references at createTextSpan
-        /types ...
+        /types .../
       </Desc>
 
-      <ContributorWrapper>
-        <ContributorIcon />
-        {contributorList.map((contributor) => (
-          <Avatar key={uuid()} src={contributor.avatarUri} />
-        ))}
-      </ContributorWrapper>
+      <UserWrapper>
+        <UserTitle>Contributor</UserTitle>
+        <Space>
+          {contributorList.map((contributor) => (
+            <Avatar key={uuid()} src={contributor.avatarUri} />
+          ))}
+        </Space>
+      </UserWrapper>
 
-      <DonatorWrapper>
-        <DonatorIcon />
-        {donatorList.map((donator) => (
-          <Avatar key={uuid()} src={donator.avatarUri} />
-        ))}
-      </DonatorWrapper>
+      <UserWrapper>
+        <UserTitle>Donator</UserTitle>
+        <Space>
+          {donatorList.map((donator) => (
+            <Avatar key={uuid()} src={donator.avatarUri} />
+          ))}
+        </Space>
+      </UserWrapper>
+
+      <StyledButton size="large">Stake</StyledButton>
     </Wrapper>
   );
 };
