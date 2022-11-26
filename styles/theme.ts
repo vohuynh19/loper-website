@@ -1,10 +1,12 @@
 export const themes = {
   colors: {
     bg: "#FFFFFF",
-    hBg: "EAF6F6",
+    hBg: "#EAF6F6",
     primary: "#66BFBF",
     positive: "#66BFBF",
     negative: "#FF0063",
+    text: "#333",
+    textContrast: "#FFF",
   },
   spaces: {
     sm: "4px",

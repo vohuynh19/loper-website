@@ -1,4 +1,4 @@
-import QuestDashboard from "@quest/ui/QuestDashboard";
+import QuestDashboard from "~/features/quest/ui/QuestDashboard";
 
 const View = () => {
   return <QuestDashboard />;

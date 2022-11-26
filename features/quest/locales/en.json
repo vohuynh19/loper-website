@@ -1,6 +1,14 @@
 {
-  "title": "quest",
-  "section": {
-    "title": "This is section"
+  "sortOption": {
+    "highReward": "Sort by highest reward",
+    "lowestReward": "Sort by lowest reward",
+    "newest": "Sort by newest",
+    "oldest": "Sort by oldest"
+  },
+  "filterOption": {
+    "open": "Opening",
+    "verifying": "Verifying",
+    "redeem": "Redeem",
+    "end": "End"
   }
 }

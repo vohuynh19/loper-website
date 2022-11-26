@@ -6,11 +6,12 @@ type IconProps = {
   name: IconName;
   color?: string;
   size?: "sm" | "md1" | "md2" | "md3" | "lg" | "xl";
+  onClick?: () => void;
 };
 
-const Icon: FC<IconProps> = ({ color, name, ...rest }) => {
+const Icon: FC<IconProps> = ({ color, name, onClick, ...rest }) => {
   const SVGComponent = styleIcon(IconComponent[name]);
-  return <SVGComponent fill={color} {...rest} />;
+  return <SVGComponent onClick={onClick} fill={color} {...rest} />;
 };
 
 const styleIcon = (Component: any) => styled(Component)<IconProps>`
@@ -34,7 +35,6 @@ const sizeMapping = (size: string) => {
       return "24px";
     case "xl":
       return "32px";
-
     default:
       return "16px";
   }

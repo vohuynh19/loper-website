@@ -1,4 +1,4 @@
-import ProfileDashboard from "@profile/ui/ProfileDashboard";
+import ProfileDashboard from "~/features/profile/ui/ProfileDashboard";
 
 const View = () => {
   return <ProfileDashboard />;

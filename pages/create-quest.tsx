@@ -1,4 +1,4 @@
-import CreateQuest from "@quest/ui/CreateQuest";
+import CreateQuest from "~/features/quest/ui/CreateQuest";
 
 const View = () => {
   return <CreateQuest />;

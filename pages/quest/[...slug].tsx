@@ -1,4 +1,4 @@
-import QuestDetail from "@quest/ui/QuestDetail";
+import QuestDetail from "~/features/quest/ui/QuestDetail";
 
 const View = () => {
   return <QuestDetail />;

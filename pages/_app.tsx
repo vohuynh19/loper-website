@@ -11,6 +11,8 @@ import { COOKIE_KEY } from "~/src/utils/constants/key";
 
 import { LayoutComponent } from "../components";
 
+import commonLocaleVi from "~/public/locales/vi.json";
+import commonLocaleEn from "~/public/locales/en.json";
 import questLocaleVi from "@quest/locales/vi.json";
 import questLocaleEn from "@quest/locales/en.json";
 import profileLocaleVi from "@profile/locales/vi.json";
@@ -23,10 +25,12 @@ const localeMapping = {
   vi: {
     quest: questLocaleVi,
     profile: profileLocaleVi,
+    common: commonLocaleVi,
   },
   en: {
     quest: questLocaleEn,
     profile: profileLocaleEn,
+    common: commonLocaleEn,
   },
 };
 

@@ -1,1 +1,2 @@
-export type UserState = {};
+export type QuestState = {};
+export type FilterState = {};
