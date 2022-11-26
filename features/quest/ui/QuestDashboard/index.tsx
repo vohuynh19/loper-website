@@ -6,7 +6,8 @@ import QuestCard from "./QuestCard";
 import FilterBar from "./FilterBar";
 import LeaderBoard from "./LeaderBoard";
 
-import { QuestCardWrapper, SideLeft, SideRight, Wrapper } from "./styled";
+import { SideLeft, SideRight, Wrapper } from "./styled";
+import { Col, Row } from "antd";
 
 const QuestDashboard = () => {
   const { t } = useLocale("quest");
@@ -16,11 +17,13 @@ const QuestDashboard = () => {
     <Wrapper>
       <SideLeft>
         <FilterBar onSearch={searchHandler} />
-        <QuestCardWrapper>
+        <Row>
           {quests.map((quest) => (
-            <QuestCard key={uuid()} />
+            <Col key={uuid()} span={12}>
+              <QuestCard />
+            </Col>
           ))}
-        </QuestCardWrapper>
+        </Row>
       </SideLeft>
 
       <SideRight>
