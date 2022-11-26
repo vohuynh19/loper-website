@@ -1,12 +1,13 @@
 import { Space } from "antd";
 import { ItemType } from "antd/es/menu/hooks/useItems";
 import { FC } from "react";
-import { Icon, Button } from "@components";
 import {
   DashboardOutlined,
   QuestionCircleOutlined,
   ProfileOutlined,
 } from "@ant-design/icons";
+
+import { Icon, Button } from "@components";
 
 import {
   AppLogo,
@@ -17,20 +18,12 @@ import {
   StyledMenu,
   StyledSider,
 } from "./styled";
+import Link from "next/link";
+import { PAGE_ROUTES } from "~/src/utils/constants/routes";
 
 type Props = {
   children?: JSX.Element;
 };
-
-const itemList: ItemType[] = [
-  { key: "Board", label: "Board", icon: <DashboardOutlined /> },
-  {
-    key: "Create Quest",
-    label: "Create Quest",
-    icon: <QuestionCircleOutlined />,
-  },
-  { key: "Profile", label: "Profile", icon: <ProfileOutlined /> },
-];
 
 const Layout: FC<Props> = ({ children }) => {
   return (
@@ -54,5 +47,23 @@ const Layout: FC<Props> = ({ children }) => {
     </StyledLayout>
   );
 };
+
+const itemList: ItemType[] = [
+  {
+    key: "Board",
+    label: <Link href={PAGE_ROUTES.DASHBOARD}>Board</Link>,
+    icon: <DashboardOutlined />,
+  },
+  {
+    key: "Create Quest",
+    label: <Link href={PAGE_ROUTES.CREATE_QUEST}>Create Quest</Link>,
+    icon: <QuestionCircleOutlined />,
+  },
+  {
+    key: "Profile",
+    label: <Link href={PAGE_ROUTES.MY_PROFILE}>Profile</Link>,
+    icon: <ProfileOutlined />,
+  },
+];
 
 export default Layout;

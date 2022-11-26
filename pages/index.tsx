@@ -1,13 +1,7 @@
-export default function Home() {
-  return (
-    <div style={{ height: "100vh" }}>
-      <div>body</div>
-      <div>body</div>
-      <div>body</div>
-      <div>body</div>
-      <div>body</div>
-      <div>body</div>
-      <div>body</div>
-    </div>
-  );
-}
+import QuestDashboard from "@quest/ui/QuestDashboard";
+
+const View = () => {
+  return <QuestDashboard />;
+};
+
+export default View;

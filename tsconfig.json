@@ -20,7 +20,9 @@
       "@src/*": ["./src/*"],
       "@components/*": ["./components/*"],
       "@components": ["./components/index.ts"],
-      "@pages/*": ["./views/pages/*"]
+      "@profile/*": ["./features/profile/*"],
+      "@quest/*": ["./features/quest/*"],
+      "@utils/*": ["./src/utils/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
