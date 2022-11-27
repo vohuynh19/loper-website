@@ -13,18 +13,30 @@ export const HeadWrapper = styled.div`
   justify-content: space-between;
   align-items: center;
 `;
-export const Title = styled.div``;
-export const Desc = styled.div``;
-
-export const UserWrapper = styled.div`
+export const Title = styled.div`
+  font-size: ${({ theme }) => theme.fs.xl};
+  font-weight: 500;
+  height: 40px;
   display: flex;
   align-items: center;
-  margin-top: ${({ theme }) => theme.spaces.md};
+`;
+export const Desc = styled.div`
+  font-size: ${({ theme }) => theme.fs.sm};
+  color: ${({ theme }) => theme.colors.secondaryText};
+  line-height: 17px;
+`;
+
+export const UserWrapper = styled.div`
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  margin-top: ${({ theme }) => theme.spaces.lg};
 `;
 export const UserTitle = styled.div`
   width: 96px;
 `;
 export const StyledButton = styled(Button)`
+  font-weight: 500;
   width: 100%;
   margin-top: ${({ theme }) => theme.spaces.xl};
 `;

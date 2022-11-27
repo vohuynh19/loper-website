@@ -3,6 +3,7 @@ export const themes = {
     bg: "#fafafa",
     sBg: "#f0f0f0",
     hBg: "#ffffff",
+    lightPrimary: "#EAF6F6",
     primary: "#66BFBF",
     positive: "#66BFBF",
     negative: "#FF0063",
@@ -24,6 +25,7 @@ export const themes = {
     md: "14px",
     lg: "16px",
     xl: "18px",
+    xxl: "20px",
   },
   token: {
     fontFamily: "inter",

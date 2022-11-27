@@ -35,9 +35,6 @@ type Props = {
 const Layout: FC<Props> = ({ children }) => {
   const { t } = useLocale("common");
   const { isDark, switchTheme, setLocaleSetting } = useContext(AppContext);
-
-  console.log(isDark);
-
   return (
     <StyledLayout>
       <StyledSider width={240}>

@@ -24,14 +24,15 @@ const QuestCard: FC<QuestCardProps> = ({
   return (
     <Wrapper>
       <HeadWrapper>
-        <Title>Quest Card</Title>
-        <Tag>Quest Card</Tag>
+        <Title>Title Here</Title>
+        <Tag>Quest Status</Tag>
       </HeadWrapper>
 
       <Desc>
-        Issue in [BuilderIO/qwik](https://github.com/BuilderIO/qwik) found in
-        #51218 `Error: start` ``` Req #6872 - references at createTextSpan
-        /types .../
+        Description Description Description Description Description Description
+        Description Description Description Description Description Description
+        Description Description Description Description Description Description
+        Description Description Description
       </Desc>
 
       <UserWrapper>

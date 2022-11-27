@@ -74,7 +74,7 @@ export const HeaderIcon = styled.div`
   border-radius: 50%;
   padding: ${({ theme }) => theme.spaces.md};
   &:hover {
-    background-color: ${({ theme }) => theme.colors.hBg};
+    background-color: ${({ theme }) => theme.colors.sBg};
   }
 `;
 
