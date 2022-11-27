@@ -1,12 +1,15 @@
 export const themes = {
   colors: {
-    bg: "#FFFFFF",
-    hBg: "#EAF6F6",
+    bg: "#fafafa",
+    sBg: "#f0f0f0",
+    hBg: "#ffffff",
     primary: "#66BFBF",
     positive: "#66BFBF",
     negative: "#FF0063",
     text: "#333",
+    secondaryText: "#474D57",
     textContrast: "#FFF",
+    secondaryTextContrast: "#B7BDC6",
   },
   spaces: {
     sm: "4px",
@@ -21,5 +24,9 @@ export const themes = {
     md: "14px",
     lg: "16px",
     xl: "18px",
+  },
+  token: {
+    fontFamily: "inter",
+    colorPrimary: "#00b96b",
   },
 };

@@ -40,7 +40,7 @@ const Layout: FC<Props> = ({ children }) => {
 
   return (
     <StyledLayout>
-      <StyledSider>
+      <StyledSider width={240}>
         <AppLogo />
         <StyledMenu items={itemList(t)} />
       </StyledSider>

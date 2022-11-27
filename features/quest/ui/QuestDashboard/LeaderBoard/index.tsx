@@ -1,5 +1,7 @@
+import { Wrapper } from "./styled";
+
 const LeaderBoard = () => {
-  return <div>LEader board</div>;
+  return <Wrapper>LEader board</Wrapper>;
 };
 
 export default LeaderBoard;

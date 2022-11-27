@@ -12,7 +12,7 @@ export const StyledLayout = styled(Layout)`
 
 export const StyledSider = styled(Sider)`
   & {
-    background-color: ${({ theme }) => theme.colors.bg} !important;
+    background-color: ${({ theme }) => theme.colors.hBg} !important;
   }
 `;
 export const StyledHeader = styled(Header)`
@@ -46,6 +46,18 @@ export const StyledMenu = styled(Menu)`
   & {
     position: sticky !important;
     top: 0;
+    background-color: ${({ theme }) => theme.colors.hBg} !important;
+    font-size: ${({ theme }) => theme.fs.lg};
+    svg {
+      font-size: ${({ theme }) => theme.fs.lg};
+    }
+    .ant-menu-item-selected {
+      background-color: ${({ theme }) => theme.colors.sBg} !important;
+      color: ${({ theme }) => theme.colors.primary};
+      /* svg {
+        color: ${({ theme }) => theme.colors.primary};
+      } */
+    }
   }
 `;
 
