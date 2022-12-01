@@ -1,6 +1,7 @@
-import { Popover, Space, type MenuProps } from "antd";
+import { Popover, Row, Space, type MenuProps, Col } from "antd";
 import { FC, useContext } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import {
   DashboardOutlined,
   QuestionCircleOutlined,
@@ -12,7 +13,8 @@ import { PAGE_ROUTES } from "~/src/utils/constants/routes";
 import { useLocale } from "~/src/hooks/useLocale";
 import AppContext from "~/src/contexts/AppContext";
 
-import { Icon } from "@components";
+import { Button, Icon } from "@components";
+import FavIcon from "~/public/favicon.ico";
 
 import {
   AppLogo,
@@ -71,7 +73,32 @@ const Layout: FC<Props> = ({ children }) => {
           </Space>
         </StyledHeader>
         <StyledContent>{children}</StyledContent>
-        <StyledFooter />
+        <StyledFooter>
+          <Row>
+            {footerColumns(t).map((col) => {
+              return (
+                <Col key={col.title} span={24 / (footerColumns(t).length + 1)}>
+                  <h1>{col.title}</h1>
+
+                  {col.children.map((row) => (
+                    <Link key={row.title} href={row.link}>
+                      <p>{row.title}</p>
+                    </Link>
+                  ))}
+                </Col>
+              );
+            })}
+            <Col
+              span={24 / (footerColumns(t).length + 1)}
+              style={{ textAlign: "center" }}
+            >
+              <Image width={100} height={100} alt="fav" src={FavIcon} />
+              <Link href="/">
+                <h1>Download now</h1>
+              </Link>
+            </Col>
+          </Row>
+        </StyledFooter>
       </StyledLayout>
     </StyledLayout>
   );
@@ -129,5 +156,63 @@ const getItem = (
     type,
   } as MenuItem;
 };
+
+const footerColumns = (t: any) => [
+  {
+    title: "About Us",
+    children: [
+      {
+        title: "About",
+        link: "/",
+      },
+      {
+        title: "Careers",
+        link: "/",
+      },
+      {
+        title: "Business Contact",
+        link: "/",
+      },
+    ],
+  },
+  {
+    title: "Communities",
+    children: [
+      {
+        title: "Mediums",
+        link: "/",
+      },
+      {
+        title: "Twitter",
+        link: "/",
+      },
+      {
+        title: "Facebook",
+        link: "/",
+      },
+      {
+        title: "Twitter",
+        link: "/",
+      },
+    ],
+  },
+  {
+    title: "Help",
+    children: [
+      {
+        title: "Bug Report",
+        link: "/",
+      },
+      {
+        title: "FAQ",
+        link: "/",
+      },
+      {
+        title: "Discussions",
+        link: "/",
+      },
+    ],
+  },
+];
 
 export default Layout;
