@@ -11,6 +11,9 @@ import {
   Wrapper,
   StyledButton,
 } from "./styled";
+import Link from "next/link";
+import { PAGE_ROUTES } from "~/src/utils/constants/routes";
+import { useRouter } from "next/router";
 
 type QuestCardProps = {
   contributorList?: any[];
@@ -21,8 +24,10 @@ const QuestCard: FC<QuestCardProps> = ({
   contributorList = [{}, {}, {}],
   donatorList = [{}, {}, {}],
 }) => {
+  const router = useRouter();
+
   return (
-    <Wrapper>
+    <Wrapper onClick={() => router.push(PAGE_ROUTES.QUEST + "/:id")}>
       <HeadWrapper>
         <Title>Title Here</Title>
         <Tag>Quest Status</Tag>
