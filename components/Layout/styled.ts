@@ -54,9 +54,9 @@ export const StyledMenu = styled(Menu)`
     .ant-menu-item-selected {
       background-color: ${({ theme }) => theme.colors.sBg} !important;
       color: ${({ theme }) => theme.colors.primary};
-      /* svg {
+      svg {
         color: ${({ theme }) => theme.colors.primary};
-      } */
+      }
     }
   }
 `;

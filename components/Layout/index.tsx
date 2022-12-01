@@ -1,4 +1,4 @@
-import { Popover, Space } from "antd";
+import { Popover, Space, type MenuProps } from "antd";
 import { FC, useContext } from "react";
 import Link from "next/link";
 import {
@@ -28,6 +28,8 @@ import {
   LoginButton,
 } from "./styled";
 
+type MenuItem = Required<MenuProps>["items"][number];
+
 type Props = {
   children?: JSX.Element;
 };
@@ -35,11 +37,17 @@ type Props = {
 const Layout: FC<Props> = ({ children }) => {
   const { t } = useLocale("common");
   const { isDark, switchTheme, setLocaleSetting } = useContext(AppContext);
+
   return (
     <StyledLayout>
       <StyledSider width={240}>
         <AppLogo />
-        <StyledMenu items={itemList(t)} />
+        <StyledMenu
+          mode="inline"
+          items={itemList(t)}
+          defaultSelectedKeys={["board"]}
+          defaultOpenKeys={["board"]}
+        />
       </StyledSider>
 
       <StyledLayout>
@@ -69,24 +77,6 @@ const Layout: FC<Props> = ({ children }) => {
   );
 };
 
-const itemList = (t: any): ItemType[] => [
-  {
-    key: "board",
-    label: <Link href={PAGE_ROUTES.DASHBOARD}>{t("board")}</Link>,
-    icon: <DashboardOutlined />,
-  },
-  {
-    key: "createQuest",
-    label: <Link href={PAGE_ROUTES.CREATE_QUEST}>{t("createQuest")}</Link>,
-    icon: <QuestionCircleOutlined />,
-  },
-  {
-    key: "profile",
-    label: <Link href={PAGE_ROUTES.MY_PROFILE}>{t("profile")}</Link>,
-    icon: <ProfileOutlined />,
-  },
-];
-
 const localePopoverContent = (t: any, setLocaleSetting: any) => {
   return (
     <LocaleWrapper>
@@ -98,6 +88,46 @@ const localePopoverContent = (t: any, setLocaleSetting: any) => {
       </LocaleItem>
     </LocaleWrapper>
   );
+};
+
+const itemList = (t: any): MenuItem[] => [
+  getItem(
+    "board",
+    <Link href={PAGE_ROUTES.DASHBOARD}>{t("board")}</Link>,
+    <DashboardOutlined />,
+    [
+      getItem("1", "Option 1"),
+      getItem("2", "Option 2"),
+      getItem("3", "Option 3"),
+      getItem("4", "Option 4"),
+    ]
+  ),
+  getItem(
+    "createQuest",
+    <Link href={PAGE_ROUTES.CREATE_QUEST}>{t("createQuest")}</Link>,
+    <QuestionCircleOutlined />
+  ),
+  getItem(
+    "profile",
+    <Link href={PAGE_ROUTES.MY_PROFILE}>{t("profile")}</Link>,
+    <ProfileOutlined />
+  ),
+];
+
+const getItem = (
+  key?: React.Key | null,
+  label?: React.ReactNode,
+  icon?: React.ReactNode,
+  children?: MenuItem[],
+  type?: "group"
+): MenuItem => {
+  return {
+    key,
+    icon,
+    children,
+    label,
+    type,
+  } as MenuItem;
 };
 
 export default Layout;

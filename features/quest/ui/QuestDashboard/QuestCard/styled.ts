@@ -7,6 +7,11 @@ export const Wrapper = styled.div`
   background-color: ${({ theme }) => theme.colors.hBg};
   border-radius: ${({ theme }) => theme.spaces.lg};
   margin-top: ${({ theme }) => theme.spaces.lg};
+  cursor: pointer;
+
+  &:hover {
+    outline: 1px solid ${({ theme }) => theme.colors.primary};
+  }
 `;
 export const HeadWrapper = styled.div`
   display: flex;

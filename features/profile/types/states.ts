@@ -1,1 +1,4 @@
-export type UserState = {};
+export type GroupState = {
+  name: string;
+  id: string | number;
+};

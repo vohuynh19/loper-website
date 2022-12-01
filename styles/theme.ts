@@ -29,6 +29,6 @@ export const themes = {
   },
   token: {
     fontFamily: "inter",
-    colorPrimary: "#00b96b",
+    colorPrimary: "#66BFBF",
   },
 };

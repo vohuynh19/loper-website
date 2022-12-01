@@ -1,3 +1,5 @@
+import { Col, Row } from "antd";
+
 import { useLocale } from "~/src/hooks/useLocale";
 import { uuid } from "@utils/functions/uuid";
 import useQuests from "@quest/hooks/useQuests";
@@ -7,7 +9,6 @@ import FilterBar from "./FilterBar";
 import LeaderBoard from "./LeaderBoard";
 
 import { SideLeft, SideRight, Wrapper } from "./styled";
-import { Col, Row } from "antd";
 
 const QuestDashboard = () => {
   const { t } = useLocale("quest");

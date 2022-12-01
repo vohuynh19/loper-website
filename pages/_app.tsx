@@ -20,6 +20,7 @@ import profileLocaleEn from "@profile/locales/en.json";
 
 import { themes } from "~/styles/theme";
 import "../styles/globals.css";
+import { ConfigProvider } from "antd";
 
 const localeMapping = {
   vi: {
@@ -59,9 +60,11 @@ export default function App({ Component, pageProps }: AppProps) {
       }}
     >
       <ThemeProvider theme={themes}>
-        <LayoutComponent>
-          <Component {...pageProps} />
-        </LayoutComponent>
+        <ConfigProvider theme={themes}>
+          <LayoutComponent>
+            <Component {...pageProps} />
+          </LayoutComponent>
+        </ConfigProvider>
       </ThemeProvider>
     </AppContext.Provider>
   );
