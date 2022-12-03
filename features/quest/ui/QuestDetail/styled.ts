@@ -217,3 +217,5 @@ export const VoteBox = styled.div`
     }
   }
 `;
+
+export const QuestSectionTitle = styled.h1``;
