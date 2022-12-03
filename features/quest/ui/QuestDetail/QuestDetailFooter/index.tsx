@@ -1,8 +1,9 @@
-import { ArrowUpward, ArrowDownward } from "@mui/icons-material";
-import Divider from "@quest/components/Divider";
 import { FC } from "react";
 
-import { useLocale } from "~/src/hooks/useLocale";
+import { useLocale } from "@src/hooks/useLocale";
+
+import { ArrowUpward, ArrowDownward } from "@mui/icons-material";
+import Divider from "@quest/components/Divider";
 
 import {
   QuestJoin,

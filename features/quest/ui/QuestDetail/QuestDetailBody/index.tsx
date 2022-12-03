@@ -1,5 +1,8 @@
-import { uuid } from "~/src/utils/functions/uuid";
+import { FC } from "react";
+
 import Divider from "@quest/components/Divider";
+import { uuid } from "@src/utils/functions/uuid";
+import { useLocale } from "@src/hooks/useLocale";
 
 import {
   Cover,
@@ -8,8 +11,6 @@ import {
   QuestAttach,
   AttachmentItem,
 } from "../styled";
-import { useLocale } from "~/src/hooks/useLocale";
-import { FC } from "react";
 
 type Props = {
   desc: string;

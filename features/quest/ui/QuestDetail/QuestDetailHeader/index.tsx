@@ -1,7 +1,9 @@
 import { Tag, Space, Avatar } from "antd";
 import { FC } from "react";
-import { useLocale } from "~/src/hooks/useLocale";
-import { uuid } from "~/src/utils/functions/uuid";
+
+import { useLocale } from "@src/hooks/useLocale";
+import { uuid } from "@src/utils/functions/uuid";
+
 import {
   Header,
   HeadInfo,
