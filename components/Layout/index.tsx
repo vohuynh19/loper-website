@@ -29,6 +29,8 @@ import {
   LocaleItem,
   LoginButton,
 } from "./styled";
+import useGroups from "@profile/hooks/useGroups";
+import { GroupState } from "@profile/types/states";
 
 type MenuItem = Required<MenuProps>["items"][number];
 
@@ -39,6 +41,7 @@ type Props = {
 const Layout: FC<Props> = ({ children }) => {
   const { t } = useLocale("common");
   const { isDark, switchTheme, setLocaleSetting } = useContext(AppContext);
+  const { groups } = useGroups();
 
   return (
     <StyledLayout>
@@ -46,9 +49,9 @@ const Layout: FC<Props> = ({ children }) => {
         <AppLogo />
         <StyledMenu
           mode="inline"
-          items={itemList(t)}
-          defaultSelectedKeys={["board"]}
+          items={itemList(t, groups)}
           defaultOpenKeys={["board"]}
+          defaultSelectedKeys={["0"]}
         />
       </StyledSider>
 
@@ -117,17 +120,17 @@ const localePopoverContent = (t: any, setLocaleSetting: any) => {
   );
 };
 
-const itemList = (t: any): MenuItem[] => [
+const itemList = (t: any, groups: GroupState[]): MenuItem[] => [
   getItem(
     "board",
     <Link href={PAGE_ROUTES.DASHBOARD}>{t("board")}</Link>,
     <DashboardOutlined />,
-    [
-      getItem("1", "Option 1"),
-      getItem("2", "Option 2"),
-      getItem("3", "Option 3"),
-      getItem("4", "Option 4"),
-    ]
+    groups.map((group) => {
+      return getItem(
+        group.id,
+        <Link href={PAGE_ROUTES.DASHBOARD}>{group.name}</Link>
+      );
+    })
   ),
   getItem(
     "createQuest",

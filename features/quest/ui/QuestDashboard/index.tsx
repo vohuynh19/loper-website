@@ -18,6 +18,7 @@ const QuestDashboard = () => {
     <Wrapper>
       <SideLeft>
         <FilterBar onSearch={searchHandler} />
+
         <Row>
           {quests.map((quest) => (
             <Col key={uuid()} span={12}>

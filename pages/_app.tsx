@@ -2,6 +2,7 @@ import { useState } from "react";
 import type { AppProps } from "next/app";
 import Cookie from "js-cookie";
 import { ThemeProvider } from "styled-components";
+import { ConfigProvider } from "antd";
 
 import AppContext, {
   defaultUser,
@@ -20,7 +21,6 @@ import profileLocaleEn from "@profile/locales/en.json";
 
 import { themes } from "~/styles/theme";
 import "../styles/globals.css";
-import { ConfigProvider } from "antd";
 
 const localeMapping = {
   vi: {
