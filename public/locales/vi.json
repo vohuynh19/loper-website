@@ -4,5 +4,8 @@
   "createQuest": "Tạo quest",
   "profile": "Thông tin",
   "english": "Tiếng Anh",
-  "vietnamese": "Tiếng Việt"
+  "vietnamese": "Tiếng Việt",
+  "selectWallet":"Chọn ví điện tử",
+  "authRequiredDesc":"Vui lòng đăng nhập tài khoản của bạn"
+
 }

@@ -33,5 +33,6 @@
     "selectWallet":"Select Wallet"
   },
   "submitDesc":"Submit the evidence if you have solved this problem.",
-  "selectWalletDesc":"Please connect your Solana wallet."
+  "selectWalletDesc":"Please connect your Solana wallet.",
+  "createQuest":"Create a Quest"
 }

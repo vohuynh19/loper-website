@@ -4,5 +4,8 @@
   "createQuest": "Create Quest",
   "profile": "Profile",
   "english": "English",
-  "vietnamese": "Vietnamese"
+  "vietnamese": "Vietnamese",
+  "selectWallet":"Select Wallet",
+  "selectWalletPlaceholder":"Please connect your Solana wallet.",
+  "authRequiredDesc":"Please sign in with your account"
 }
