@@ -21,12 +21,14 @@ export const StyledSider = styled(Sider)`
 `;
 export const StyledHeader = styled(Header)`
   & {
-    background-color: ${({ theme }) => theme.colors.bg} !important;
+    background-color: transparent !important;
     display: flex;
     width: 100%;
     height: 100%;
     align-items: center;
     padding-inline: 32px !important;
+    background: ${({ theme }) =>
+      `linear-gradient(#d574fe,${theme.colors.primary})`} !important;
   }
 
   .ant-space-item {
@@ -54,12 +56,14 @@ export const StyledContent = styled(Content)`
 export const StyledMenu = styled(Menu)`
   & {
     flex: 1;
-    background-color: ${({ theme }) => theme.colors.bg} !important;
+    background-color: transparent !important;
     font-size: ${({ theme }) => theme.fs.lg};
+    color: ${({ theme }) => theme.colors.textContrast};
     svg {
       font-size: ${({ theme }) => theme.fs.lg};
     }
     .ant-menu-item-selected {
+      color: ${({ theme }) => theme.colors.textContrast} !important;
     }
     .ant-menu-item {
       height: 40px;
