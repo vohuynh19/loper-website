@@ -1,5 +1,9 @@
 import Head from "next/head";
-import QuestDashboard from "~/features/quest/ui/QuestDashboard";
+
+import UniversalSearchQuest from "@quest/ui/UniversalSearchQuest";
+import QuestCategories from "@quest/ui/QuestCategories";
+import RecentQuests from "@quest/ui/RecentQuests";
+import TopUserList from "@user/ui/TopUserList";
 
 const View = () => {
   return (
@@ -7,7 +11,11 @@ const View = () => {
       <Head>
         <title>Loper website</title>
       </Head>
-      <QuestDashboard />
+
+      <UniversalSearchQuest />
+      <TopUserList />
+      <QuestCategories />
+      <RecentQuests />
     </>
   );
 };

@@ -21,6 +21,7 @@
       "@components": ["./components/index.ts"],
       "@profile/*": ["./features/profile/*"],
       "@quest/*": ["./features/quest/*"],
+      "@user/*": ["./features/user/*"],
       "@utils/*": ["./src/utils/*"],
       "~/*": ["./*"],
     }
