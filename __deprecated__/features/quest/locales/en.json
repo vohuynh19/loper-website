@@ -1,0 +1,38 @@
+{
+  "sortOption": {
+    "highReward": "Sort by highest reward",
+    "lowestReward": "Sort by lowest reward",
+    "newest": "Sort by newest",
+    "oldest": "Sort by oldest"
+  },
+  "filterOption": {
+    "open": "Opening",
+    "verifying": "Verifying",
+    "redeem": "Redeem",
+    "end": "End"
+  },
+  "questStatus":{
+    "open": "Opening",
+    "verifying": "Verifying",
+    "redeem": "Redeem",
+    "end": "End"
+  },
+  "role":{
+    "solver":"Solver",
+    "donator":"Donator"
+  },
+  "common":{
+    "description":"Description",
+    "attachment":"Attachment",
+    "email":"Email",
+    "phone":"Phone",
+    "address":"Address"
+  },
+  "button":{
+    "submit":"Submit",
+    "selectWallet":"Select Wallet"
+  },
+  "submitDesc":"Submit the evidence if you have solved this problem.",
+  "selectWalletDesc":"Please connect your Solana wallet.",
+  "createQuest":"Create a Quest"
+}
