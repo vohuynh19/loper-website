@@ -2,18 +2,15 @@ import { Popover, Row, Space, type MenuProps, Col } from "antd";
 import { FC, useContext } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import {
-  DashboardOutlined,
-  QuestionCircleOutlined,
-  ProfileOutlined,
-} from "@ant-design/icons";
-import { ItemType } from "antd/es/menu/hooks/useItems";
 
-import { PAGE_ROUTES } from "~/src/utils/constants/routes";
-import { useLocale } from "~/src/hooks/useLocale";
-import AppContext from "~/src/contexts/AppContext";
+import { PAGE_ROUTES } from "@src/utils/constants/routes";
+import { useLocale } from "@src/hooks/useLocale";
+import AppContext from "@src/contexts/AppContext";
 
-import { Button, Icon } from "@components";
+import useGroups from "@profile/hooks/useGroups";
+import { GroupState } from "@profile/types/states";
+
+import { Icon } from "@components";
 import FavIcon from "~/public/favicon.ico";
 
 import {
@@ -25,12 +22,9 @@ import {
   StyledHeader,
   StyledLayout,
   StyledMenu,
-  StyledSider,
   LocaleItem,
   LoginButton,
 } from "./styled";
-import useGroups from "@profile/hooks/useGroups";
-import { GroupState } from "@profile/types/states";
 
 type MenuItem = Required<MenuProps>["items"][number];
 
@@ -45,64 +39,65 @@ const Layout: FC<Props> = ({ children }) => {
 
   return (
     <StyledLayout>
-      <StyledSider width={240}>
-        <AppLogo />
+      <StyledHeader>
+        <Link className="logo" href={PAGE_ROUTES.HOME}>
+          <AppLogo />
+        </Link>
+
         <StyledMenu
-          mode="inline"
+          mode="horizontal"
           items={itemList(t, groups)}
           defaultOpenKeys={["board"]}
           defaultSelectedKeys={["0"]}
         />
-      </StyledSider>
 
-      <StyledLayout>
-        <StyledHeader>
-          <Space align="center" size="large">
-            <Popover content={localePopoverContent(t, setLocaleSetting)}>
-              <HeaderIcon>
-                <Icon name="translate" size="lg" />
-              </HeaderIcon>
-            </Popover>
-
+        <Space align="center" size="large">
+          <Popover content={localePopoverContent(t, setLocaleSetting)}>
             <HeaderIcon>
-              <Icon
-                onClick={() => switchTheme(!isDark)}
-                name={isDark ? "lightMode" : "darkMode"}
-                size="lg"
-              />
+              <Icon name="translate" size="lg" />
             </HeaderIcon>
+          </Popover>
 
-            <LoginButton> {t("login")} </LoginButton>
-          </Space>
-        </StyledHeader>
-        <StyledContent>{children}</StyledContent>
-        <StyledFooter>
-          <Row>
-            {footerColumns(t).map((col) => {
-              return (
-                <Col key={col.title} span={24 / (footerColumns(t).length + 1)}>
-                  <h1>{col.title}</h1>
+          <HeaderIcon>
+            <Icon
+              onClick={() => switchTheme(!isDark)}
+              name={isDark ? "lightMode" : "darkMode"}
+              size="lg"
+            />
+          </HeaderIcon>
 
-                  {col.children.map((row) => (
-                    <Link key={row.title} href={row.link}>
-                      <p>{row.title}</p>
-                    </Link>
-                  ))}
-                </Col>
-              );
-            })}
-            <Col
-              span={24 / (footerColumns(t).length + 1)}
-              style={{ textAlign: "center" }}
-            >
-              <Image width={100} height={100} alt="fav" src={FavIcon} />
-              <Link href="/">
-                <h1>Download now</h1>
-              </Link>
-            </Col>
-          </Row>
-        </StyledFooter>
-      </StyledLayout>
+          <LoginButton> {t("login")} </LoginButton>
+        </Space>
+      </StyledHeader>
+
+      <StyledContent>{children}</StyledContent>
+
+      <StyledFooter>
+        <Row>
+          {footerColumns(t).map((col) => {
+            return (
+              <Col key={col.title} span={24 / (footerColumns(t).length + 1)}>
+                <h1>{col.title}</h1>
+
+                {col.children.map((row) => (
+                  <Link key={row.title} href={row.link}>
+                    <p>{row.title}</p>
+                  </Link>
+                ))}
+              </Col>
+            );
+          })}
+          <Col
+            span={24 / (footerColumns(t).length + 1)}
+            style={{ textAlign: "center" }}
+          >
+            <Image width={100} height={100} alt="fav" src={FavIcon} />
+            <Link href="/">
+              <h1>Download now</h1>
+            </Link>
+          </Col>
+        </Row>
+      </StyledFooter>
     </StyledLayout>
   );
 };
@@ -121,26 +116,14 @@ const localePopoverContent = (t: any, setLocaleSetting: any) => {
 };
 
 const itemList = (t: any, groups: GroupState[]): MenuItem[] => [
+  getItem("home", <Link href={PAGE_ROUTES.HOME}>{t("home")}</Link>),
   getItem(
-    "board",
-    <Link href={PAGE_ROUTES.DASHBOARD}>{t("board")}</Link>,
-    <DashboardOutlined />,
-    groups.map((group) => {
-      return getItem(
-        group.id,
-        <Link href={PAGE_ROUTES.DASHBOARD}>{group.name}</Link>
-      );
-    })
+    "questions",
+    <Link href={PAGE_ROUTES.QUESTIONS}>{t("questions")}</Link>
   ),
   getItem(
     "createQuest",
-    <Link href={PAGE_ROUTES.CREATE_QUEST}>{t("createQuest")}</Link>,
-    <QuestionCircleOutlined />
-  ),
-  getItem(
-    "profile",
-    <Link href={PAGE_ROUTES.MY_PROFILE}>{t("profile")}</Link>,
-    <ProfileOutlined />
+    <Link href={PAGE_ROUTES.CREATE_QUEST}>{t("createQuest")}</Link>
   ),
 ];
 

@@ -19,8 +19,8 @@ import questLocaleEn from "@quest/locales/en.json";
 import profileLocaleVi from "@profile/locales/vi.json";
 import profileLocaleEn from "@profile/locales/en.json";
 
-import { themes } from "~/styles/theme";
-import "../styles/globals.css";
+import { themes, GlobalStyle } from "~/styles/theme";
+import "../styles/globals.scss";
 
 const localeMapping = {
   vi: {
@@ -59,6 +59,7 @@ export default function App({ Component, pageProps }: AppProps) {
         localeData: localeMapping,
       }}
     >
+      <GlobalStyle />
       <ThemeProvider theme={themes}>
         <ConfigProvider theme={themes}>
           <LayoutComponent>

@@ -8,6 +8,10 @@ export const StyledLayout = styled(Layout)`
   .ant-menu {
     border: none !important;
   }
+
+  .css-dev-only-do-not-override-1i6yeeq {
+    font-family: ${({ theme }) => theme.fontFamily};
+  }
 `;
 
 export const StyledSider = styled(Sider)`
@@ -21,11 +25,15 @@ export const StyledHeader = styled(Header)`
     display: flex;
     width: 100%;
     height: 100%;
-    justify-content: flex-end;
     align-items: center;
+    padding-inline: 32px !important;
   }
 
   .ant-space-item {
+    display: flex;
+    align-items: center;
+  }
+  .logo {
     display: flex;
     align-items: center;
   }
@@ -36,6 +44,7 @@ export const StyledFooter = styled(Footer)`
   }
 `;
 export const StyledContent = styled(Content)`
+  font-family: ${({ theme }) => theme.fontFamily} !important;
   color: ${({ theme }) => theme.colors.text};
   & {
     background-color: ${({ theme }) => theme.colors.bg};
@@ -44,27 +53,26 @@ export const StyledContent = styled(Content)`
 
 export const StyledMenu = styled(Menu)`
   & {
-    position: sticky !important;
-    top: 0;
-    background-color: ${({ theme }) => theme.colors.hBg} !important;
+    flex: 1;
+    background-color: ${({ theme }) => theme.colors.bg} !important;
     font-size: ${({ theme }) => theme.fs.lg};
     svg {
       font-size: ${({ theme }) => theme.fs.lg};
     }
     .ant-menu-item-selected {
-      background-color: ${({ theme }) => theme.colors.sBg} !important;
-      color: ${({ theme }) => theme.colors.primary};
-      svg {
-        color: ${({ theme }) => theme.colors.primary};
-      }
+    }
+    .ant-menu-item {
+      height: 40px;
+      display: flex;
+      align-items: center;
     }
   }
 `;
 
 export const AppLogo = styled(VercelLogo)`
-  width: 100%;
   padding: ${({ theme }) => `${theme.spaces.lg} ${theme.spaces.xl}`};
   cursor: pointer;
+  width: 200px;
 `;
 
 export const HeaderIcon = styled.div`

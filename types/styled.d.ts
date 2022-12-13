@@ -6,5 +6,6 @@ declare module "styled-components" {
     colors: typeof themes.colors;
     spaces: typeof themes.spaces;
     fs: typeof themes.fs;
+    fontFamily: typeof themes.fontFamily;
   }
 }

@@ -1,16 +1,26 @@
+import { createGlobalStyle } from "styled-components";
+import { Roboto } from "@next/font/google";
+
+const roboto = Roboto({
+  subsets: ["latin"],
+  weight: ["100", "300", "400", "500", "700"],
+});
+
 export const themes = {
   colors: {
-    bg: "#fafafa",
-    sBg: "#f0f0f0",
-    hBg: "#ffffff",
+    hBg: "#ECF1F9",
+    bg: "#ffffff",
+    sBg: "#e2eef1",
+    border: "#e2eef1",
     lightPrimary: "#EAF6F6",
-    primary: "#66BFBF",
+    primary: "#566ffe",
     positive: "#66BFBF",
     negative: "#FF0063",
-    text: "#333",
-    secondaryText: "#474D57",
-    textContrast: "#FFF",
+    text: "#183b56",
+    secondaryText: "#6f7d95",
+    textContrast: "#FFFFFF",
     secondaryTextContrast: "#B7BDC6",
+    icon: "#6f7d95",
   },
   spaces: {
     sm: "4px",
@@ -28,7 +38,11 @@ export const themes = {
     xxl: "20px",
   },
   token: {
-    fontFamily: "inter",
-    colorPrimary: "#66BFBF",
+    colorPrimary: "#566ffe",
   },
+  fontFamily: roboto.style.fontFamily,
 };
+
+export const GlobalStyle = createGlobalStyle`
+  
+`;

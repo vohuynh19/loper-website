@@ -1,16 +1,16 @@
 export const PAGE_ROUTES = {
-  DASHBOARD: "/",
+  HOME: "/",
   CREATE_QUEST: "/create-quest",
-  QUEST: "/quest",
+  QUESTIONS: "/questions",
   MY_PROFILE: "/my-profile",
   PROFILE: "/profile",
 };
 
 export const PUBLIC_ROUTES = [
-  PAGE_ROUTES.DASHBOARD,
+  PAGE_ROUTES.HOME,
   PAGE_ROUTES.CREATE_QUEST,
-  PAGE_ROUTES.QUEST,
+  PAGE_ROUTES.QUESTIONS,
   PAGE_ROUTES.PROFILE,
 ];
 
-export const PRIVATE_ROUTES = [PAGE_ROUTES.QUEST];
+export const PRIVATE_ROUTES = [PAGE_ROUTES.MY_PROFILE];
