@@ -2,7 +2,7 @@ import { Col, Row } from "antd";
 import { FC } from "react";
 
 import { uuid } from "@src/utils/functions/uuid";
-import UserItemType1 from "../../components/UserItem/UserItemV1";
+import UserItemType1 from "../../components/UserItem/UserItemType1";
 import { UserState } from "../../types/states";
 
 import { Title, UserListWrapper, BodyUserList } from "./styled";

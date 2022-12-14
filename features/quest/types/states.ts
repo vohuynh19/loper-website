@@ -16,3 +16,5 @@ export type CategoryState = {
 export type LabelState = {
   label: string;
 };
+export type PostState = {};
+export type CommentState = {};

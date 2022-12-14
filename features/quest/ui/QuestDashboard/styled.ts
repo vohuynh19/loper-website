@@ -13,7 +13,7 @@ export const Wrapper = styled.div`
   display: flex;
   width: 100%;
   max-width: 1600px;
-  padding: 0 24px;
+  padding: 40px 24px;
 `;
 
 export const LeftCol = styled.div`
@@ -21,5 +21,5 @@ export const LeftCol = styled.div`
 `;
 export const RightCol = styled.div`
   width: 36%;
-  background-color: green;
+  padding-left: 32px;
 `;

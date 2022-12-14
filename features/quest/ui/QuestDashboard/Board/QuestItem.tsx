@@ -1,5 +1,6 @@
 import { CommentOutlined, StarOutline } from "@mui/icons-material";
 import { Avatar, Tag } from "antd";
+import Link from "next/link";
 
 import {
   Action,
@@ -20,9 +21,12 @@ const QuestItem = () => {
       />
 
       <QuestItemContent>
-        <QuestItemTitle>
-          How to change the copyrights on the footer
-        </QuestItemTitle>
+        <Link href={""}>
+          <QuestItemTitle>
+            How to change the copyrights on the footer
+          </QuestItemTitle>
+        </Link>
+
         <TagList>
           <Tag>Docly Theme Support</Tag>
           <Tag>Docly Theme Support</Tag>

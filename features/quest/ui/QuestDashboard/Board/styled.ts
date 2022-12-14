@@ -10,7 +10,8 @@ export const ToolbarWrapper = styled.div`
   align-items: center;
   background-color: ${({ theme }) => theme.colors.sBg};
   padding: 0 16px;
-  border: 1px solid ${({ theme }) => theme.colors.border};
+  border-top: 1px solid ${({ theme }) => theme.colors.border};
+  border-bottom: 1px solid ${({ theme }) => theme.colors.border};
 `;
 
 export const LeftToolbar = styled.div`
@@ -69,6 +70,10 @@ export const QuestItemWrapper = styled.div`
     width: 44px;
     height: 44px;
     margin-right: 16px;
+  }
+
+  :hover {
+    background-color: ${({ theme }) => theme.colors.sBg};
   }
 `;
 

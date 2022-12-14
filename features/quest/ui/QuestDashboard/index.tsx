@@ -18,8 +18,14 @@ const QuestDashboard = () => {
         </LeftCol>
 
         <RightCol>
-          <RecentActivities />
-          <RecentActivities />
+          <RecentActivities
+            title="Recent Topics"
+            activities={[{}, {}, {}, {}, {}, {}]}
+          />
+          <RecentActivities
+            title="Recent Replies"
+            activities={[{}, {}, {}, {}, {}, {}]}
+          />
         </RightCol>
       </Wrapper>
     </Container>
