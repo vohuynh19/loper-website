@@ -6,7 +6,7 @@ export const Container = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: calc(100vh - 64px);
+  min-height: calc(100vh - 64px);
 `;
 
 export const Wrapper = styled.div`

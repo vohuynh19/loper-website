@@ -10,6 +10,7 @@ export const ToolbarWrapper = styled.div`
   align-items: center;
   background-color: ${({ theme }) => theme.colors.sBg};
   padding: 0 16px;
+  border: 1px solid ${({ theme }) => theme.colors.border};
 `;
 
 export const LeftToolbar = styled.div`
@@ -56,4 +57,46 @@ export const FilterWrapper = styled.div`
   }
 `;
 
-export const QuestItemWrapper = styled.div``;
+export const QuestItemWrapper = styled.div`
+  display: flex;
+  background-color: ${({ theme }) => theme.colors.bg};
+  border-bottom: 1px solid ${({ theme }) => theme.colors.border};
+  padding: 24px;
+  align-items: center;
+  width: 100%;
+
+  .quest-avatar {
+    width: 44px;
+    height: 44px;
+    margin-right: 16px;
+  }
+`;
+
+export const QuestItemContent = styled.div`
+  flex: 1;
+`;
+export const QuestItemTitle = styled.div`
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 24px;
+`;
+export const TagList = styled.div`
+  margin: 8px 0;
+`;
+export const Time = styled.div`
+  font-size: 12px;
+  color: ${({ theme }) => theme.colors.secondaryText};
+`;
+
+export const Action = styled.div`
+  display: flex;
+`;
+export const ActionItem = styled.div`
+  display: flex;
+  align-items: center;
+
+  margin-left: 24px;
+  svg {
+    margin-right: 8px;
+  }
+`;
