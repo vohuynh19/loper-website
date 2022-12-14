@@ -13,9 +13,7 @@ const useQuests = () => {
     {},
   ]);
 
-  const searchHandler = (filter: FilterState) => {};
-
-  return { quests, searchHandler };
+  return { quests };
 };
 
 export default useQuests;

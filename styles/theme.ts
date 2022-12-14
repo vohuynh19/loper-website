@@ -10,7 +10,7 @@ export const themes = {
   colors: {
     hBg: "#ECF1F9",
     bg: "#ffffff",
-    sBg: "#e2eef1",
+    sBg: "#f6f8fa",
     border: "#e2eef1",
     lightPrimary: "#EAF6F6",
     primary: "#566ffe",

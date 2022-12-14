@@ -13,3 +13,6 @@ export type CategoryState = {
   name: string;
   numberOfPosts: number;
 };
+export type LabelState = {
+  label: string;
+};
