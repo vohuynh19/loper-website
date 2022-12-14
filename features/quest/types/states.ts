@@ -7,3 +7,9 @@ export type GroupState = {
   name: string;
   id: string | number;
 };
+
+export type CategoryState = {
+  iconUrl: string;
+  name: string;
+  numberOfPosts: number;
+};

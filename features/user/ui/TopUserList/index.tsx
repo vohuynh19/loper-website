@@ -11,20 +11,14 @@ const TopUserList = () => {
   return (
     <Container>
       <Wrapper>
-        <Row style={{ flex: 1 }}>
-          <Col span={12}>
-            <TopUserListItem
-              title="Hot Donator"
-              userList={donatorList.filter((item, index) => index < 8)}
-            />
-          </Col>
-          <Col span={12}>
-            <TopUserListItem
-              title="Hot Solver"
-              userList={donatorList.filter((item, index) => index < 8)}
-            />
-          </Col>
-        </Row>
+        <TopUserListItem
+          title="Hot Donator"
+          userList={donatorList.filter((item, index) => index < 8)}
+        />
+        <TopUserListItem
+          title="Hot Solver"
+          userList={donatorList.filter((item, index) => index < 8)}
+        />
       </Wrapper>
     </Container>
   );

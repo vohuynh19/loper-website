@@ -7,15 +7,23 @@ export const Container = styled.div`
   background-color: ${({ theme }) => theme.colors.hBg};
 `;
 
+export const UserListWrapper = styled.div``;
+
 export const Wrapper = styled.div`
   max-width: 1600px;
   width: 100%;
   min-height: 500px;
   display: flex;
-`;
 
-export const UserListWrapper = styled.div`
-  padding: 0 16px;
+  ${UserListWrapper} {
+    :first-child {
+      padding-right: 24px;
+    }
+
+    :last-child {
+      padding-left: 24px;
+    }
+  }
 `;
 
 export const Title = styled.div`
