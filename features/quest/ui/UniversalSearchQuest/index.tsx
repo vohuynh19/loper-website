@@ -1,5 +1,12 @@
 import UniversalSearch from "@quest/components/UniversalSearch";
-import { Desc, Title, Wrapper } from "./styled";
+import {
+  DecorateImg,
+  Desc,
+  Title,
+  Wrapper,
+  DecorateImg1,
+  DecorateImg2,
+} from "./styled";
 
 const HomeSearchQuest = () => {
   return (
@@ -10,6 +17,9 @@ const HomeSearchQuest = () => {
         Funding Block.
       </Desc>
       <UniversalSearch />
+      <DecorateImg src="https://raroin.creabik.com/assets/img/logos/raroin.svg" />
+      <DecorateImg1 src="https://raroin.creabik.com/assets/img/logos/raroin.svg" />{" "}
+      <DecorateImg2 src="https://raroin.creabik.com/assets/img/logos/raroin.svg" />
     </Wrapper>
   );
 };

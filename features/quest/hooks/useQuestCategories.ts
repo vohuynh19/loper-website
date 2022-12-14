@@ -6,7 +6,8 @@ import { CategoryState } from "../types/states";
 const useQuestCategories = () => {
   const [questCategories, setQuestCategories] = useState<CategoryState[]>(
     mockQuestCategories.map((quest) => ({
-      iconUrl: "https://raroin.creabik.com/assets/img/icons/github.svg",
+      iconUrl:
+        "https://wordpress-theme.spider-themes.net/ama/wp-content/uploads/2020/07/dashboard.svg",
       name: "Knowledge Base",
       numberOfPosts: 155,
     }))

@@ -2,7 +2,6 @@ import Head from "next/head";
 
 import UniversalSearchQuest from "@quest/ui/UniversalSearchQuest";
 import QuestCategories from "@quest/ui/QuestCategories";
-import RecentQuests from "@quest/ui/RecentQuests";
 import TopUserList from "@user/ui/TopUserList";
 
 const View = () => {
@@ -13,9 +12,8 @@ const View = () => {
       </Head>
 
       <UniversalSearchQuest />
-      <TopUserList />
       <QuestCategories />
-      <RecentQuests />
+      <TopUserList />
     </>
   );
 };
