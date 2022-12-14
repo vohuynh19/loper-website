@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
-  min-height: 600px;
   background-image: ${({ theme }) =>
     `linear-gradient(${theme.colors.primary}, ${theme.colors.hBg})`};
 
@@ -9,6 +8,7 @@ export const Wrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  height: calc(100vh - 64px);
 `;
 
 export const Title = styled.div`

@@ -1,4 +1,5 @@
-export type GroupState = {
+export type UserState = {
   name: string;
-  id: string | number;
+  avatarUrl: string;
+  balance: number;
 };
