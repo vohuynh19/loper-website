@@ -1,7 +1,10 @@
-import { CommentOutlined, StarOutline } from "@mui/icons-material";
-import { PAGE_ROUTES } from "@src/utils/constants/routes";
-import { Avatar, Tag } from "antd";
+import { Avatar } from "antd";
 import Link from "next/link";
+import { CommentOutlined, StarOutline } from "@mui/icons-material";
+
+import { PAGE_ROUTES } from "@src/utils/constants/routes";
+
+import Category from "../../../components/Category";
 
 import {
   Action,
@@ -28,8 +31,7 @@ const QuestItem = () => {
         </Link>
 
         <TagList>
-          <Tag>Docly Theme Support</Tag>
-          <Tag>Docly Theme Support</Tag>
+          <Category categoryName="Docly Theme Support" />
         </TagList>
 
         <Time>September 21, 2020 at 8:11 pm</Time>

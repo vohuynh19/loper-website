@@ -2,7 +2,7 @@ import { useLocale } from "@src/hooks/useLocale";
 
 import AskQuestion from "./AskQuestion";
 import Board from "./Board";
-import RecentActivities from "./RecentActivities";
+import RecentActivities from "./../../components/RecentActivities";
 
 import { Container, LeftCol, RightCol, Wrapper } from "./styled";
 

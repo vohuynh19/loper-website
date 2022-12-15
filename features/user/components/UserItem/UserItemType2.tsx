@@ -1,22 +1,33 @@
+import Role, { RoleType } from "@components/Role";
 import { Avatar } from "antd";
 import { FC } from "react";
-import { UserInfo1, Wrapper1, Name1, Assets1 } from "./styled";
+import { UserInfo2, Wrapper2, Name2, Desc2, Time2 } from "./styled";
 
 type Props = {
   avatarUrl?: string;
   name?: string;
   amount?: number;
+  role?: RoleType;
+  time?: number;
 };
 
-const UserItemType2: FC<Props> = ({ avatarUrl, name, amount }) => {
+const UserItemType2: FC<Props> = ({
+  avatarUrl,
+  name = "VO HUYNH",
+  role,
+  time = "September 21, 2020 at 8:16 pm",
+}) => {
   return (
-    <Wrapper1>
-      <Avatar style={{ width: "5em", height: "5em" }} src={avatarUrl} />
-      <UserInfo1>
-        <Name1>{name}</Name1>
-        <Assets1>{amount} FDB</Assets1>
-      </UserInfo1>
-    </Wrapper1>
+    <Wrapper2>
+      <Avatar style={{ width: "44px", height: "44px" }} src={avatarUrl} />
+      <UserInfo2>
+        <Name2>{name}</Name2>
+        <Desc2>
+          <Role role={role} />
+          <Time2>{time}</Time2>
+        </Desc2>
+      </UserInfo2>
+    </Wrapper2>
   );
 };
 

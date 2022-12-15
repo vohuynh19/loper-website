@@ -14,7 +14,7 @@ import {
   Title,
   Wrapper,
 } from "./styled";
-import { PostState, CommentState } from "../../../types/states";
+import { PostState, CommentState } from "../../types/states";
 
 type Props = {
   activities: PostState[] | CommentState[];
