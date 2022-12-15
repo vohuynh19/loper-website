@@ -9,8 +9,16 @@ export const Wrapper = styled.div`
   justify-content: center;
   align-items: center;
   height: calc(100vh - 64px);
-
   position: relative;
+  padding: 0 24px;
+`;
+
+export const Content = styled.div`
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const Title = styled.div`
@@ -29,20 +37,23 @@ export const Desc = styled.div`
 
 export const DecorateImg = styled.img`
   position: absolute;
-  width: 400px;
+  width: 24%;
   left: 44px;
+  min-width: 300px;
 `;
 
 export const DecorateImg1 = styled.img`
   position: absolute;
-  width: 200px;
-  right: 400px;
+  width: 12%;
+  right: 24%;
   top: 44px;
+  min-width: 200px;
 `;
 
 export const DecorateImg2 = styled.img`
   position: absolute;
-  width: 300px;
-  right: 200px;
+  width: 18%;
+  right: 44px;
   bottom: 44px;
+  min-width: 200px;
 `;

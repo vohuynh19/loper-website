@@ -5,6 +5,7 @@ export const Container = styled.div`
   justify-content: center;
   align-items: center;
   background-color: ${({ theme }) => theme.colors.hBg};
+  padding: 40px 24px;
 `;
 
 export const UserListWrapper = styled.div``;

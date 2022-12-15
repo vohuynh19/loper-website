@@ -6,7 +6,7 @@ export const Container = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 40px 0;
+  padding: 40px 24px;
 `;
 
 export const Wrapper = styled.div`
@@ -28,6 +28,10 @@ export const CategoryWrapper = styled.div`
   padding: 16px 32px;
   border-radius: 16px;
   height: 100px;
+  cursor: pointer;
+  :hover {
+    opacity: 0.8;
+  }
 `;
 export const Content = styled.div``;
 export const Icon = styled.img`

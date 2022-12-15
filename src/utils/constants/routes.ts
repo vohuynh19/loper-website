@@ -2,6 +2,7 @@ export const PAGE_ROUTES = {
   HOME: "/",
   CREATE_QUEST: "/create-quest",
   QUESTIONS: "/questions",
+  QUEST_DETAIL: (id: string) => `/quest/${id}`,
   MY_PROFILE: "/my-profile",
   PROFILE: "/profile",
 };
