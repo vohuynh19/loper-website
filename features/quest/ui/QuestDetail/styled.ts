@@ -69,6 +69,7 @@ export const Replies = styled.div`
 `;
 export const ReplyWrapper = styled.div`
   padding: 16px 0;
+  position: relative;
 `;
 export const QuestTitle = styled.div`
   font-size: 24px;

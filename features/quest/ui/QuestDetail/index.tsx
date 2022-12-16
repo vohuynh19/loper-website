@@ -71,7 +71,7 @@ const QuestDetail = () => {
             category={questDetailData?.category}
             tags={questDetailData?.tag}
             id={id}
-            questAddress={questDetailData.questAddress}
+            questAddress={questDetailData?.questAddress}
           />
 
           <Replies>
@@ -86,6 +86,7 @@ const QuestDetail = () => {
                   like={reply.like}
                   content={reply.content}
                   key={uuid()}
+                  questAddress={questDetailData?.questAddress}
                 />
               );
             })}

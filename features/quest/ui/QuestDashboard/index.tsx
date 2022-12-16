@@ -5,9 +5,11 @@ import Board from "./Board";
 import RecentActivities from "./../../components/RecentActivities";
 
 import { Container, LeftCol, RightCol, Wrapper } from "./styled";
+import useQuests from "@quest/hooks/useQuests";
 
 const QuestDashboard = () => {
   const { t } = useLocale("quest");
+  const { quests } = useQuests();
 
   return (
     <Container>
@@ -20,11 +22,11 @@ const QuestDashboard = () => {
         <RightCol>
           <RecentActivities
             title="Recent Topics"
-            activities={[{}, {}, {}, {}, {}, {}]}
+            activities={quests.filter((val, idx) => idx < 6)}
           />
           <RecentActivities
             title="Recent Replies"
-            activities={[{}, {}, {}, {}, {}, {}]}
+            activities={quests.filter((val, idx) => idx < 6)}
           />
         </RightCol>
       </Wrapper>

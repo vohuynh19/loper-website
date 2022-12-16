@@ -37,6 +37,7 @@ export type VoteParams = {
   funderAddress: string;
   solutionAddress: string;
   isVote: boolean;
+  questAddress: string;
 };
 
 export type MutateParams =

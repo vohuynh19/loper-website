@@ -127,27 +127,35 @@ export const useAppContract = () => {
       return;
     }
 
-    // const questAccount = new anchor.web3.PublicKey(
-    //   data.funderAddress
-    // );
-    // const [solutionAccount, bump] = await anchor.web3.PublicKey.findProgramAddress(
-    //   [
-    //     Buffer.from("solution_account"),
-    //     wallet.publicKey.toBuffer(),
-    //     questAccount.toBuffer(),
-    //   ],
-    //   PROGRAM_ID
-    // );
+    const questAccount = new anchor.web3.PublicKey(data.questAddress);
+    const [solutionAccount, bumpSolution] =
+      await anchor.web3.PublicKey.findProgramAddress(
+        [
+          Buffer.from("solution_account"),
+          wallet.publicKey.toBuffer(),
+          questAccount.toBuffer(),
+        ],
+        PROGRAM_ID
+      );
+    const [funderState, bump] = await anchor.web3.PublicKey.findProgramAddress(
+      [
+        Buffer.from("funder_state"),
+        wallet.publicKey.toBuffer(),
+        questAccount.toBuffer(),
+      ],
+      PROGRAM_ID
+    );
 
-    // const tx = await program.methods
-    //   .updateSolution("cmm beo", "link ne")
-    //   .accounts({
-    //     questAccount: questAccount,
-    //     solutionAccount: solutionAccount,
-    //     user: wallet.publicKey,
-    //   })
-    //   .signers([])
-    //   .rpc();
+    return await program.methods
+      .vote()
+      .accounts({
+        questAccount,
+        funderState,
+        solutionAccount: solutionAccount,
+        user: wallet.publicKey,
+      })
+      .signers([])
+      .rpc();
   };
 
   return { createQuest, createComment, vote };

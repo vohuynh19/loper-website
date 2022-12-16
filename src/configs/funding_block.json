@@ -276,33 +276,6 @@
       "returns": null
     },
     {
-      "name": "unVote",
-      "accounts": [
-        {
-          "name": "questAccount",
-          "isMut": true,
-          "isSigner": false
-        },
-        {
-          "name": "funderState",
-          "isMut": true,
-          "isSigner": false
-        },
-        {
-          "name": "solutionAccount",
-          "isMut": true,
-          "isSigner": false
-        },
-        {
-          "name": "user",
-          "isMut": false,
-          "isSigner": true
-        }
-      ],
-      "args": [],
-      "returns": null
-    },
-    {
       "name": "transferRewarding",
       "accounts": [
         {
@@ -463,6 +436,10 @@
         "fields": [
           {
             "name": "questAddress",
+            "type": "publicKey"
+          },
+          {
+            "name": "votedSolution",
             "type": "publicKey"
           },
           {

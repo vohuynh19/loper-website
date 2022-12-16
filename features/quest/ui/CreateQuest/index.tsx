@@ -68,6 +68,7 @@ const CreateQuest = () => {
                 notification.success({ message: `txid: ${res[0]}` });
                 router.push(PAGE_ROUTES.QUESTIONS);
                 client.invalidateQueries("get/quest");
+                client.invalidateQueries("get/commentData");
               },
             }
           );

@@ -14,10 +14,10 @@ import {
   Title,
   Wrapper,
 } from "./styled";
-import { PostState, CommentState } from "../../types/states";
+import moment from "moment";
 
 type Props = {
-  activities: PostState[] | CommentState[];
+  activities: any[];
   title: string;
 };
 
@@ -28,28 +28,55 @@ const RecentActivities: FC<Props> = ({ activities, title }) => {
 
       <ListView>
         {activities.map((activity) => (
-          <ActivityItem key={uuid()} />
+          <ActivityItem
+            title={activity.title}
+            key={uuid()}
+            createdAt={activity.createdAt}
+          />
         ))}
       </ListView>
     </Wrapper>
   );
 };
 
-const ActivityItem = () => {
+const ActivityItem = ({
+  title = "Title here",
+  time = "2 days, 14 hours ago",
+  createdAt = 0,
+}) => {
+  const dateString = () => {
+    var now = moment(new Date());
+    var end = moment(createdAt);
+    var duration = moment.duration(now.diff(end));
+    var days = Math.round(duration.asDays());
+    var hours = Math.round(duration.asHours());
+    var minutes = Math.round(duration.asMinutes());
+
+    if (days > 0) {
+      return `${days} days before`;
+    } else if (hours > 0) {
+      return `${hours} hours ago`;
+    } else if (minutes > 0) {
+      return `${minutes} minutes ago`;
+    } else {
+      return "Just now";
+    }
+  };
+
   return (
     <ItemWrapper>
       <CommentOutlined />
 
       <ItemContent>
         <ItemTitle>
-          Test by
+          {title} by
           <Avatar
             src="https://raroin.creabik.com/assets/img/avatars/avatar_12.png"
             size={"small"}
           />
-          <Link href="">Vo Huynh</Link>
+          <Link href="">******</Link>
         </ItemTitle>
-        <ItemTime>2 days, 14 hours ago</ItemTime>
+        <ItemTime>{dateString()}</ItemTime>
       </ItemContent>
     </ItemWrapper>
   );
