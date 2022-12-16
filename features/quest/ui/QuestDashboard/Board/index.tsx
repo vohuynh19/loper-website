@@ -1,4 +1,5 @@
 import { uuid } from "@src/utils/functions/uuid";
+import moment from "moment";
 
 import useQuests from "../../../hooks/useQuests";
 import BoardToolbar from "./BoardToolbar";
@@ -13,7 +14,14 @@ const Board = () => {
     <Wrapper>
       <BoardToolbar />
       {quests.map((quest) => (
-        <QuestItem key={uuid()} />
+        <QuestItem
+          id={quest._id}
+          title={quest.title}
+          time={moment(quest.createdAt).format("MMMM DD,YYYY [at] HH:mm A")}
+          key={uuid()}
+          category={quest.category}
+          commentNum={quest.solverAddress.length}
+        />
       ))}
     </Wrapper>
   );

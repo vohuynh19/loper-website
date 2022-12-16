@@ -1,13 +1,13 @@
 import { useConnection, useAnchorWallet } from "@solana/wallet-adapter-react";
 import * as anchor from "@project-serum/anchor";
 import { useEffect, useState } from "react";
-import idl from "~/src/configs/funding_block.json";
 
-export type CreateQuestParam = {
-  title: string;
-  amount: number;
-  timeEnd: number;
-};
+import idl from "~/src/configs/funding_block.json";
+import {
+  CreateQuestParams,
+  CreateSolutionParams,
+  VoteParams,
+} from "@src/apis/types";
 
 const PROGRAM_ID = new anchor.web3.PublicKey(
   `9RgWo49pJ9pD24QkBMFTJ1J6RQdHbLoTa4J65V3n8eKm`
@@ -42,7 +42,7 @@ export const useAppContract = () => {
     }
   }, [wallet, connection]);
 
-  const createQuest = async (data: CreateQuestParam) => {
+  const createQuest = async (data: CreateQuestParams) => {
     if (!wallet || !program) {
       return;
     }
@@ -66,25 +66,89 @@ export const useAppContract = () => {
       owner: wallet.publicKey,
     });
 
-    return await program.methods
-      .createQuest(
-        data.title,
-        new anchor.BN(data.amount.toString()),
-        new anchor.BN(data.timeEnd.toString())
-      )
-      .accounts({
-        questAccount: questAccount.publicKey,
-        funderState: funderState,
-        programWallet: programWalletToken,
-        user: wallet.publicKey,
-        userToken,
-        systemProgram: anchor.web3.SystemProgram.programId,
-        tokenProgram: anchor.utils.token.TOKEN_PROGRAM_ID,
-        associatedTokenProgram: anchor.utils.token.ASSOCIATED_PROGRAM_ID,
-        rent: anchor.web3.SYSVAR_RENT_PUBKEY,
-      })
-      .signers([questAccount])
-      .rpc();
+    return Promise.all([
+      await program.methods
+        .createQuest(
+          data.title,
+          new anchor.BN(data.fund.toString()),
+          new anchor.BN(data.timeEnd.toString())
+        )
+        .accounts({
+          questAccount: questAccount.publicKey,
+          funderState: funderState,
+          programWallet: programWalletToken,
+          user: wallet.publicKey,
+          userToken,
+          systemProgram: anchor.web3.SystemProgram.programId,
+          tokenProgram: anchor.utils.token.TOKEN_PROGRAM_ID,
+          associatedTokenProgram: anchor.utils.token.ASSOCIATED_PROGRAM_ID,
+          rent: anchor.web3.SYSVAR_RENT_PUBKEY,
+        })
+        .signers([questAccount])
+        .rpc(),
+      questAccount.publicKey,
+    ]);
   };
-  return { createQuest };
+
+  const createComment = async (data: CreateSolutionParams) => {
+    if (!wallet || !program) {
+      return;
+    }
+
+    const questAccount = new anchor.web3.PublicKey(data.questAddress);
+
+    const [solutionAccount, bump] =
+      await anchor.web3.PublicKey.findProgramAddress(
+        [
+          Buffer.from("solution_account"),
+          wallet.publicKey.toBuffer(),
+          questAccount.toBuffer(),
+        ],
+        PROGRAM_ID
+      );
+
+    return Promise.all([
+      await program.methods
+        .createSolution(data.content || "", data.imageLink || "")
+        .accounts({
+          questAccount: questAccount,
+          solutionAccount: solutionAccount,
+          user: wallet.publicKey,
+          systemProgram: anchor.web3.SystemProgram.programId,
+        })
+        .signers([])
+        .rpc(),
+      questAccount,
+    ]);
+  };
+
+  const vote = async (data: VoteParams) => {
+    if (!wallet || !program) {
+      return;
+    }
+
+    // const questAccount = new anchor.web3.PublicKey(
+    //   data.funderAddress
+    // );
+    // const [solutionAccount, bump] = await anchor.web3.PublicKey.findProgramAddress(
+    //   [
+    //     Buffer.from("solution_account"),
+    //     wallet.publicKey.toBuffer(),
+    //     questAccount.toBuffer(),
+    //   ],
+    //   PROGRAM_ID
+    // );
+
+    // const tx = await program.methods
+    //   .updateSolution("cmm beo", "link ne")
+    //   .accounts({
+    //     questAccount: questAccount,
+    //     solutionAccount: solutionAccount,
+    //     user: wallet.publicKey,
+    //   })
+    //   .signers([])
+    //   .rpc();
+  };
+
+  return { createQuest, createComment, vote };
 };

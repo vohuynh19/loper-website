@@ -16,7 +16,14 @@ import {
   Time,
 } from "./styled";
 
-const QuestItem = () => {
+const QuestItem = ({
+  title = "How to change the copyrights on the footer",
+  time = "September 21, 2020 at 8:11 pm",
+  commentNum = 5,
+  likeNum = 7,
+  category = "Docly Theme Support",
+  id = "0",
+}) => {
   return (
     <QuestItemWrapper>
       <Avatar
@@ -24,26 +31,24 @@ const QuestItem = () => {
         src="https://raroin.creabik.com/assets/img/avatars/avatar_12.png"
       />
       <QuestItemContent>
-        <Link href={PAGE_ROUTES.QUEST_DETAIL("0")}>
-          <QuestItemTitle>
-            How to change the copyrights on the footer
-          </QuestItemTitle>
+        <Link href={PAGE_ROUTES.QUEST_DETAIL(id)}>
+          <QuestItemTitle>{title}</QuestItemTitle>
         </Link>
 
         <TagList>
-          <Category categoryName="Docly Theme Support" />
+          <Category categoryName={category} />
         </TagList>
 
-        <Time>September 21, 2020 at 8:11 pm</Time>
+        <Time>{time}</Time>
       </QuestItemContent>
 
       <Action>
         <ActionItem>
-          <CommentOutlined />5
+          <CommentOutlined /> {commentNum}
         </ActionItem>
 
         <ActionItem>
-          <StarOutline /> 6
+          <StarOutline /> {likeNum}
         </ActionItem>
       </Action>
     </QuestItemWrapper>

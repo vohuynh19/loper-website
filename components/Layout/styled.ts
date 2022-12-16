@@ -38,6 +38,14 @@ export const StyledHeader = styled(Header)`
   .logo {
     display: flex;
     align-items: center;
+    font-weight: 500;
+    font-size: 20px;
+    color: ${({ theme }) => theme.colors.textContrast};
+    margin-right: 20px;
+  }
+
+  img {
+    margin-right: 4px;
   }
 `;
 export const StyledFooter = styled(Footer)`

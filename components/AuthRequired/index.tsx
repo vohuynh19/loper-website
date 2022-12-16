@@ -1,6 +1,5 @@
 import Image from "next/image";
 import { Wrapper, LoginBox, SignButton, Title } from "./styled";
-import FavIcon from "~/public/favicon.ico";
 import { useLocale } from "@src/hooks/useLocale";
 import { useAppState } from "@src/contexts/AppContext";
 
@@ -14,7 +13,12 @@ const AuthRequired = () => {
 
   return (
     <Wrapper>
-      <Image width={100} height={100} alt="fav" src={FavIcon} />
+      <Image
+        width={100}
+        height={100}
+        alt="fav"
+        src={"https://raroin.creabik.com/assets/img/logos/raroin.svg"}
+      />
       <LoginBox>
         <Title>{t("authRequiredDesc")}</Title>
         <SignButton onClick={loginHandler}>Google</SignButton>

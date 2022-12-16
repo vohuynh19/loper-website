@@ -12,7 +12,6 @@ import useGroups from "@profile/hooks/useGroups";
 import { GroupState } from "@profile/types/states";
 
 import { Icon } from "@components";
-import FavIcon from "~/public/favicon.ico";
 
 import {
   AppLogo,
@@ -41,7 +40,13 @@ const Layout: FC<Props> = ({ children }) => {
     <StyledLayout>
       <StyledHeader>
         <Link className="logo" href={PAGE_ROUTES.HOME}>
-          <AppLogo />
+          <Image
+            width={44}
+            height={44}
+            alt="fav"
+            src={"https://raroin.creabik.com/assets/img/logos/raroin.svg"}
+          />
+          Funding Block
         </Link>
 
         <StyledMenu
@@ -91,7 +96,12 @@ const Layout: FC<Props> = ({ children }) => {
             span={24 / (footerColumns(t).length + 1)}
             style={{ textAlign: "center" }}
           >
-            <Image width={100} height={100} alt="fav" src={FavIcon} />
+            <Image
+              width={100}
+              height={100}
+              alt="fav"
+              src={"https://raroin.creabik.com/assets/img/logos/raroin.svg"}
+            />
             <Link href="/">
               <h1>Download now</h1>
             </Link>

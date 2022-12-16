@@ -1,43 +1,43 @@
 import { FavoriteBorder } from "@mui/icons-material";
+import { useWallet } from "@solana/wallet-adapter-react";
+import { useWalletModal } from "@solana/wallet-adapter-react-ui";
 import UserItemType2 from "@user/components/UserItem/UserItemType2";
 
-import { Body, ReplyWrapper, ReplyContent, QuestHeadReply } from "./styled";
+import {
+  Body,
+  ReplyWrapper,
+  ReplyContent,
+  QuestHeadReply,
+  LoveArea,
+} from "./styled";
 
-const Reply = () => {
+const Reply = ({
+  like = 10,
+  content = "dignissimos, omnis magnis, commodi donec maecenas incididunt metus",
+}) => {
+  const wallet = useWallet();
+  const modal = useWalletModal();
+
+  const likeHandler = () => {
+    if (!wallet.connected) {
+      modal.setVisible(true);
+      return;
+    }
+  };
+
   return (
     <ReplyWrapper>
       <QuestHeadReply>
-        <UserItemType2 />
+        <UserItemType2 avatarUrl="https://raroin.creabik.com/assets/img/avatars/avatar_12.png" />
       </QuestHeadReply>
 
       <Body>
-        <FavoriteBorder />
+        <LoveArea style={{ width: "44px" }}>
+          <FavoriteBorder onClick={likeHandler} />
+          {like}
+        </LoveArea>
 
-        <ReplyContent>
-          Hello, where can I find the one-page document template? Rerum cubilia,
-          ultricies cillum, dignissim dignissimos, omnis magnis, commodi donec
-          maecenas incididunt metus wisi I updated the theme, however I cant
-          seem to find the onepage documentation template Hello, where can I
-          find the one-page document template? Rerum cubilia, ultricies cillum,
-          dignissim dignissimos, omnis magnis, commodi donec maecenas incididunt
-          metus wisi I updated the theme, however I cant seem to find the
-          onepage documentation template Hello, where can I find the one-page
-          document template? Rerum cubilia, ultricies cillum, dignissim
-          dignissimos, omnis magnis, commodi donec maecenas incididunt metus
-          wisi I updated the theme, however I cant seem to find the onepage
-          documentation template Hello, where can I find the one-page document
-          template? Rerum cubilia, ultricies cillum, dignissim dignissimos,
-          omnis magnis, commodi donec maecenas incididunt metus wisi I updated
-          the theme, however I cant seem to find the onepage documentation
-          template Hello, where can I find the one-page document template? Rerum
-          cubilia, ultricies cillum, dignissim dignissimos, omnis magnis,
-          commodi donec maecenas incididunt metus wisi I updated the theme,
-          however I cant seem to find the onepage documentation template Hello,
-          where can I find the one-page document template? Rerum cubilia,
-          ultricies cillum, dignissim dignissimos, omnis magnis, commodi donec
-          maecenas incididunt metus wisi I updated the theme, however I cant
-          seem to find the onepage documentation template
-        </ReplyContent>
+        <ReplyContent>{content}</ReplyContent>
       </Body>
     </ReplyWrapper>
   );

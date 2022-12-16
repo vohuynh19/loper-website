@@ -1,11 +1,20 @@
-export type PaginationParams = {
-  filter: {};
-  sort: {};
-  limit: 10;
-  page: 1;
+export const DEFAULT_FILTER = {
+  filter: {},
+  sort: {
+    createdAt: -1,
+  },
+  limit: 10,
+  page: 1,
 };
 
-type CreateQuestParams = {
+export type PaginationParams = {
+  filter: any;
+  sort: any;
+  limit: number;
+  page: number;
+};
+
+export type CreateQuestParams = {
   userAddress: string;
   imageLink: string;
   questAddress: string;
@@ -16,7 +25,7 @@ type CreateQuestParams = {
   fund: number;
 };
 
-type CreateSolutionParams = {
+export type CreateSolutionParams = {
   solutionAddress: string;
   questAddress: string;
   userAddress: string;
@@ -24,7 +33,7 @@ type CreateSolutionParams = {
   imageLink: string;
 };
 
-type VoteParams = {
+export type VoteParams = {
   funderAddress: string;
   solutionAddress: string;
   isVote: boolean;

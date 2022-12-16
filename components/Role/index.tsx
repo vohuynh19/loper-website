@@ -48,7 +48,7 @@ const Role: FC<Props> = ({ role }) => {
       case RoleType.DONATOR:
         return "Donator";
       default:
-        return "Nothing";
+        return "Anonymous";
     }
   };
 

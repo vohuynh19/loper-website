@@ -13,7 +13,7 @@ type Props = {
 
 const UserItemType2: FC<Props> = ({
   avatarUrl,
-  name = "VO HUYNH",
+  name = "********",
   role,
   time = "September 21, 2020 at 8:16 pm",
 }) => {

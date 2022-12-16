@@ -15,7 +15,24 @@ export const Wrapper = styled.div`
   max-width: 1600px;
   padding: 40px 24px;
 `;
+export const LoveArea = styled.div`
+  & > svg {
+    height: 44px;
+    width: 44px;
+    margin-top: 16px;
+    cursor: pointer;
+    :hover {
+      color: ${({ theme }) => theme.colors.primary};
+    }
+  }
 
+  text-align: center;
+  font-size: 24px;
+  font-weight: 500;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
 export const LeftCol = styled.div`
   width: 64%;
 `;
@@ -38,6 +55,9 @@ export const Title = styled.div`
   border-bottom: 1px solid ${({ theme }) => theme.colors.border};
   margin-bottom: 12px;
   font-weight: 500;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 `;
 
 export const Replies = styled.div`
@@ -66,12 +86,6 @@ export const QuestWrapper = styled.div`
   border-radius: 16px;
 `;
 export const Body = styled.div`
-  & > svg {
-    height: 44px;
-    width: 44px;
-    margin-top: 16px;
-  }
-
   display: flex;
 `;
 export const BodyContent = styled.div`

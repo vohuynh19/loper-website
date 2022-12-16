@@ -8,7 +8,7 @@ import { useWallet } from "@solana/wallet-adapter-react";
 import { WalletMultiButton } from "@solana/wallet-adapter-react-ui";
 import { Button, DatePicker, Form, Input, notification } from "antd";
 import moment from "moment";
-import { useMutation } from "react-query";
+import { useMutation, useQueryClient } from "react-query";
 import dynamic from "next/dynamic";
 const TextArea = dynamic(() => import("antd/es/input/TextArea"), {
   ssr: false,
@@ -17,15 +17,18 @@ const TextArea = dynamic(() => import("antd/es/input/TextArea"), {
 import { ENDPOINTS } from "@src/apis/endpoints";
 import axiosInstance from "@src/apis/axios";
 
-import { CreateQuestParam, useAppContract } from "@src/hooks/useAppContract";
+import { useAppContract } from "@src/hooks/useAppContract";
 
 import { Container, Title, Wrapper } from "./styled";
 import { useState } from "react";
+import { useRouter } from "next/router";
+import { PAGE_ROUTES } from "@src/utils/constants/routes";
 
 const CreateQuest = () => {
   const wallet = useWallet();
   const [form] = Form.useForm();
   const { createQuest } = useAppContract();
+  const router = useRouter();
   const { mutate: createServerQuest, isLoading: loading1 } = useMutation<
     any,
     any,
@@ -40,6 +43,7 @@ const CreateQuest = () => {
   >((params) => {
     return createQuest(params);
   });
+  const client = useQueryClient();
 
   const [time, setTime] = useState(moment().unix());
 
@@ -49,14 +53,24 @@ const CreateQuest = () => {
       const params = {
         ...values,
         timeEnd: time,
+        userAddress: wallet.publicKey,
+        fund: values.fund,
       };
       createContractQuest(params, {
-        onSuccess: (tx: string) => {
-          createServerQuest(params, {
-            onSuccess: () => {
-              notification.success({ message: `txid: ${tx}` });
+        onSuccess: (res) => {
+          createServerQuest(
+            {
+              ...params,
+              questAddress: res[1].toString(),
             },
-          });
+            {
+              onSuccess: () => {
+                notification.success({ message: `txid: ${res[0]}` });
+                router.push(PAGE_ROUTES.QUESTIONS);
+                client.invalidateQueries("get/quest");
+              },
+            }
+          );
         },
         onError: (err) => {
           notification.error({ message: `Error: ${err}` });
@@ -69,10 +83,10 @@ const CreateQuest = () => {
 
   return (
     <Container>
-      <Wrapper>
-        {!wallet.connected ? (
-          <WalletMultiButton />
-        ) : (
+      {!wallet.connected ? (
+        <WalletMultiButton />
+      ) : (
+        <Wrapper>
           <Form
             form={form}
             className="formAnt"
@@ -94,7 +108,7 @@ const CreateQuest = () => {
             <Form.Item
               rules={[{ required: true }]}
               required
-              name={"amount"}
+              name={"fund"}
               label={"Initial Fund Amount"}
             >
               <Input size={"large"} suffix={<MoneyOutlined />} />
@@ -123,7 +137,7 @@ const CreateQuest = () => {
             <Form.Item
               rules={[{ required: true }]}
               required
-              name={"tags"}
+              name={"tag"}
               label={"Tags"}
             >
               <Input size={"large"} suffix={<TagOutlined />} />
@@ -146,8 +160,8 @@ const CreateQuest = () => {
               Submit
             </Button>
           </Form>
-        )}
-      </Wrapper>
+        </Wrapper>
+      )}
     </Container>
   );
 };

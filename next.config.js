@@ -19,6 +19,17 @@ const nextConfig = {
       { loader: "@next/font/google", options: { subsets: ["latin"] } },
     ],
   },
+  images: {
+    formats: ["image/avif", "image/webp"],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "raroin.creabik.com",
+        port: "",
+        pathname: "/assets/img/**",
+      },
+    ],
+  },
 };
 
 module.exports = nextConfig;
