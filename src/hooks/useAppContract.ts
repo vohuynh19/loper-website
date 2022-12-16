@@ -3,6 +3,12 @@ import * as anchor from "@project-serum/anchor";
 import { useEffect, useState } from "react";
 import idl from "~/src/configs/funding_block.json";
 
+export type CreateQuestParam = {
+  title: string;
+  amount: number;
+  timeEnd: number;
+};
+
 const PROGRAM_ID = new anchor.web3.PublicKey(
   `9RgWo49pJ9pD24QkBMFTJ1J6RQdHbLoTa4J65V3n8eKm`
 );
@@ -15,7 +21,6 @@ const mint = new anchor.web3.PublicKey(
 
 export const useAppContract = () => {
   const [program, setProgram] = useState<anchor.Program>();
-
   const { connection } = useConnection();
   const wallet = useAnchorWallet();
 
@@ -37,10 +42,11 @@ export const useAppContract = () => {
     }
   }, [wallet, connection]);
 
-  const createQuest = async (callback: (tx: string) => void) => {
+  const createQuest = async (data: CreateQuestParam) => {
     if (!wallet || !program) {
       return;
     }
+
     const questAccount = anchor.web3.Keypair.generate();
     const [funderState, bump] = await anchor.web3.PublicKey.findProgramAddress(
       [
@@ -59,15 +65,19 @@ export const useAppContract = () => {
       mint: mint,
       owner: wallet.publicKey,
     });
-    const tx = await program.methods
-      .createQuest("cuc cut", new anchor.BN("1"), new anchor.BN("1671123600"))
+
+    return await program.methods
+      .createQuest(
+        data.title,
+        new anchor.BN(data.amount.toString()),
+        new anchor.BN(data.timeEnd.toString())
+      )
       .accounts({
         questAccount: questAccount.publicKey,
         funderState: funderState,
         programWallet: programWalletToken,
         user: wallet.publicKey,
         userToken,
-        mint: mint,
         systemProgram: anchor.web3.SystemProgram.programId,
         tokenProgram: anchor.utils.token.TOKEN_PROGRAM_ID,
         associatedTokenProgram: anchor.utils.token.ASSOCIATED_PROGRAM_ID,
@@ -75,8 +85,6 @@ export const useAppContract = () => {
       })
       .signers([questAccount])
       .rpc();
-    callback(tx);
   };
-
   return { createQuest };
 };

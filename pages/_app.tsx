@@ -7,8 +7,9 @@ import { ConfigProvider } from "antd";
 import AppContext, {
   defaultUser,
   defaultSetting,
-} from "~/src/contexts/AppContext";
-import { COOKIE_KEY } from "~/src/utils/constants/key";
+} from "@src/contexts/AppContext";
+import { COOKIE_KEY } from "@src/utils/constants/key";
+import WalletContextProvider from "@src/contexts/WalletContextProvider";
 
 import { LayoutComponent } from "../components";
 
@@ -21,6 +22,7 @@ import profileLocaleEn from "@profile/locales/en.json";
 
 import { themes, GlobalStyle } from "~/styles/theme";
 import "../styles/globals.scss";
+import { QueryClient, QueryClientProvider } from "react-query";
 
 const localeMapping = {
   vi: {
@@ -35,6 +37,14 @@ const localeMapping = {
   },
 };
 
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: Infinity,
+    },
+  },
+});
+
 export default function App({ Component, pageProps }: AppProps) {
   const [isDark, setDark] = useState(
     String(Cookie.get(COOKIE_KEY.THEME)) === "true"
@@ -46,27 +56,31 @@ export default function App({ Component, pageProps }: AppProps) {
   const [accountSettings, setAccountSettings] = useState(defaultSetting);
 
   return (
-    <AppContext.Provider
-      value={{
-        accountSettings,
-        setAccountSettings,
-        isDark,
-        switchTheme: setDark,
-        user,
-        setUser,
-        localeSetting,
-        setLocaleSetting,
-        localeData: localeMapping,
-      }}
-    >
-      <GlobalStyle />
-      <ThemeProvider theme={themes}>
-        <ConfigProvider theme={themes}>
-          <LayoutComponent>
-            <Component {...pageProps} />
-          </LayoutComponent>
-        </ConfigProvider>
-      </ThemeProvider>
-    </AppContext.Provider>
+    <QueryClientProvider client={queryClient}>
+      <AppContext.Provider
+        value={{
+          accountSettings,
+          setAccountSettings,
+          isDark,
+          switchTheme: setDark,
+          user,
+          setUser,
+          localeSetting,
+          setLocaleSetting,
+          localeData: localeMapping,
+        }}
+      >
+        <WalletContextProvider>
+          <GlobalStyle />
+          <ThemeProvider theme={themes}>
+            <ConfigProvider theme={themes}>
+              <LayoutComponent>
+                <Component {...pageProps} />
+              </LayoutComponent>
+            </ConfigProvider>
+          </ThemeProvider>
+        </WalletContextProvider>
+      </AppContext.Provider>
+    </QueryClientProvider>
   );
 }

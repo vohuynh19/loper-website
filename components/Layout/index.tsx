@@ -2,6 +2,7 @@ import { Popover, Row, Space, type MenuProps, Col } from "antd";
 import { FC, useContext } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { WalletMultiButton } from "@solana/wallet-adapter-react-ui";
 
 import { PAGE_ROUTES } from "@src/utils/constants/routes";
 import { useLocale } from "@src/hooks/useLocale";
@@ -23,7 +24,6 @@ import {
   StyledLayout,
   StyledMenu,
   LocaleItem,
-  LoginButton,
 } from "./styled";
 
 type MenuItem = Required<MenuProps>["items"][number];
@@ -66,7 +66,7 @@ const Layout: FC<Props> = ({ children }) => {
             />
           </HeaderIcon>
 
-          <LoginButton> {t("login")} </LoginButton>
+          <WalletMultiButton />
         </Space>
       </StyledHeader>
 
