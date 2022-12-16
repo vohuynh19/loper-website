@@ -21,4 +21,5 @@ export const ENDPOINTS = {
     CREATE: `${PREFIX}/create-funding-state`,
   },
   VOTE: `${PREFIX}/vote`,
+  LIKE: `${PREFIX}/like`,
 };

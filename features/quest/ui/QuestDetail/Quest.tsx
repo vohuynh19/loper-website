@@ -1,9 +1,10 @@
 import { FavoriteBorder } from "@mui/icons-material";
 import Category from "@quest/components/Category";
 import TagList from "@quest/components/TagList";
-import { useWallet } from "@solana/wallet-adapter-react";
-import { useWalletModal } from "@solana/wallet-adapter-react-ui";
+import axiosInstance from "@src/apis/axios";
+import { ENDPOINTS } from "@src/apis/endpoints";
 import UserItemType2 from "@user/components/UserItem/UserItemType2";
+import { useMutation, useQueryClient } from "react-query";
 
 import {
   Body,
@@ -22,15 +23,27 @@ const Quest = ({
   likeNum = 10,
   category = "Docly Theme Support",
   tags = "Tags,123",
+  questAddress = "",
+  id = "",
 }) => {
-  const wallet = useWallet();
-  const modal = useWalletModal();
+  const queryClient = useQueryClient();
+
+  const { mutate } = useMutation<any, any, any>((params) =>
+    axiosInstance.post(ENDPOINTS.LIKE, params)
+  );
 
   const likeHandler = () => {
-    if (!wallet.connected) {
-      modal.setVisible(true);
-      return;
-    }
+    mutate(
+      {
+        address: questAddress,
+        isSolution: false,
+      },
+      {
+        onSuccess: () => {
+          queryClient.invalidateQueries(`get/quest/${id}`);
+        },
+      }
+    );
   };
 
   const tagsDecode = tags.split(",").map((val) => {

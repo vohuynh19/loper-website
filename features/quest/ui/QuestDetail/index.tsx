@@ -70,6 +70,8 @@ const QuestDetail = () => {
             likeNum={questDetailData?.like}
             category={questDetailData?.category}
             tags={questDetailData?.tag}
+            id={id}
+            questAddress={questDetailData.questAddress}
           />
 
           <Replies>
@@ -79,7 +81,12 @@ const QuestDetail = () => {
 
             {(commentDataArr || []).map((reply) => {
               return (
-                <Reply like={reply.like} content={reply.content} key={uuid()} />
+                <Reply
+                  commentAddress={reply.solutionAddress}
+                  like={reply.like}
+                  content={reply.content}
+                  key={uuid()}
+                />
               );
             })}
           </Replies>

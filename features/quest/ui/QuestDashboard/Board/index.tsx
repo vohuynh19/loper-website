@@ -21,6 +21,7 @@ const Board = () => {
           key={uuid()}
           category={quest.category}
           commentNum={quest.solverAddress.length}
+          likeNum={quest.like}
         />
       ))}
     </Wrapper>

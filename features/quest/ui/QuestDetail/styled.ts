@@ -90,6 +90,7 @@ export const Body = styled.div`
 `;
 export const BodyContent = styled.div`
   padding-left: 12px;
+  width: 100%;
 `;
 export const FYI = styled.div`
   display: flex;
