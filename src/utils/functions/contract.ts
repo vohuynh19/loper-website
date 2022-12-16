@@ -1,7 +1,7 @@
 import { useConnection, useAnchorWallet } from "@solana/wallet-adapter-react";
 import * as anchor from "@project-serum/anchor";
 import { FC, useEffect, useState } from "react";
-import idl from "~/src/configs/funding_block.json";
+import idl from "~/src/configs/funding_block.json";
 
 const PROGRAM_ID = new anchor.web3.PublicKey(
   `9RgWo49pJ9pD24QkBMFTJ1J6RQdHbLoTa4J65V3n8eKm`
