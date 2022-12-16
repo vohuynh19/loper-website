@@ -23,6 +23,7 @@
       "@quest/*": ["./features/quest/*"],
       "@user/*": ["./features/user/*"],
       "@utils/*": ["./src/utils/*"],
+      "@configs/*": ["./src/configs/*"],
       "~/*": ["./*"],
     }
   },

@@ -1,0 +1,558 @@
+{
+  "version": "0.1.0",
+  "name": "funding_block",
+  "instructions": [
+    {
+      "name": "createQuest",
+      "accounts": [
+        {
+          "name": "questAccount",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "funderState",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "programWallet",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "user",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "userToken",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "mint",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "tokenProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "associatedTokenProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "rent",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "fundAmount",
+          "type": "u64"
+        },
+        {
+          "name": "timeEnd",
+          "type": "u64"
+        }
+      ],
+      "returns": null
+    },
+    {
+      "name": "createSolution",
+      "accounts": [
+        {
+          "name": "questAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "solutionAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "user",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "content",
+          "type": "string"
+        },
+        {
+          "name": "imageLink",
+          "type": "string"
+        }
+      ],
+      "returns": null
+    },
+    {
+      "name": "updateSolution",
+      "accounts": [
+        {
+          "name": "questAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "solutionAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "user",
+          "isMut": true,
+          "isSigner": true
+        }
+      ],
+      "args": [
+        {
+          "name": "content",
+          "type": "string"
+        },
+        {
+          "name": "imageLink",
+          "type": "string"
+        }
+      ],
+      "returns": null
+    },
+    {
+      "name": "fundQuest",
+      "accounts": [
+        {
+          "name": "questAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "funderState",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "programWallet",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "user",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "userToken",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "tokenProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "associatedTokenProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "rent",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "fundAmount",
+          "type": "u64"
+        }
+      ],
+      "returns": null
+    },
+    {
+      "name": "joinFund",
+      "accounts": [
+        {
+          "name": "questAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "funderState",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "programWallet",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "user",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "userToken",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "tokenProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "associatedTokenProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "rent",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "fundAmount",
+          "type": "u64"
+        }
+      ],
+      "returns": null
+    },
+    {
+      "name": "vote",
+      "accounts": [
+        {
+          "name": "questAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "funderState",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "solutionAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "user",
+          "isMut": false,
+          "isSigner": true
+        }
+      ],
+      "args": [],
+      "returns": null
+    },
+    {
+      "name": "unVote",
+      "accounts": [
+        {
+          "name": "questAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "funderState",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "solutionAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "user",
+          "isMut": false,
+          "isSigner": true
+        }
+      ],
+      "args": [],
+      "returns": null
+    },
+    {
+      "name": "transferRewarding",
+      "accounts": [
+        {
+          "name": "questAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "userWallet",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "wallet",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "walletToken",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "tokenProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "associatedTokenProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "rent",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "fundAmount",
+          "type": "u64"
+        },
+        {
+          "name": "closeStatus",
+          "type": "string"
+        }
+      ],
+      "returns": null
+    },
+    {
+      "name": "closeQuest",
+      "accounts": [
+        {
+          "name": "questAccount",
+          "isMut": true,
+          "isSigner": false
+        }
+      ],
+      "args": [],
+      "returns": null
+    },
+    {
+      "name": "sendFundBack",
+      "accounts": [
+        {
+          "name": "questAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "userWallet",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "wallet",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "walletToken",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "tokenProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "associatedTokenProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "rent",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "fundAmount",
+          "type": "u64"
+        }
+      ],
+      "returns": null
+    }
+  ],
+  "accounts": [
+    {
+      "name": "Quest",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "title",
+            "type": "string"
+          },
+          {
+            "name": "timeEnd",
+            "type": "u64"
+          },
+          {
+            "name": "numFunder",
+            "type": "u64"
+          },
+          {
+            "name": "numSolver",
+            "type": "u64"
+          },
+          {
+            "name": "fund",
+            "type": "u64"
+          },
+          {
+            "name": "closed",
+            "type": "string"
+          }
+        ]
+      }
+    },
+    {
+      "name": "FunderState",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "questAddress",
+            "type": "publicKey"
+          },
+          {
+            "name": "fund",
+            "type": "u64"
+          },
+          {
+            "name": "vote",
+            "type": "bool"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Solution",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "questAddress",
+            "type": "publicKey"
+          },
+          {
+            "name": "userAddress",
+            "type": "publicKey"
+          },
+          {
+            "name": "content",
+            "type": "string"
+          },
+          {
+            "name": "numVote",
+            "type": "u64"
+          },
+          {
+            "name": "imageLink",
+            "type": "string"
+          }
+        ]
+      }
+    }
+  ],
+  "errors": [
+    {
+      "code": 6000,
+      "name": "EndedQuest",
+      "msg": "QUEST.ENDED_QUEST"
+    },
+    {
+      "code": 6001,
+      "name": "InvalidLength",
+      "msg": "QUEST.INVALID_LENGTH"
+    },
+    {
+      "code": 6002,
+      "name": "InvalidTimeStamp",
+      "msg": "QUEST.INVALID_TIME_STAMP"
+    },
+    {
+      "code": 6003,
+      "name": "TransferFail",
+      "msg": "TRANSFER.TRANSFER_FAIL"
+    },
+    {
+      "code": 6004,
+      "name": "FunderVoted",
+      "msg": "VOTE.FUNDER_HAS_VOTED"
+    },
+    {
+      "code": 6005,
+      "name": "FunderNotVoted",
+      "msg": "VOTE.FUNDER_HAS_NOT_VOTED"
+    },
+    {
+      "code": 6006,
+      "name": "InvalidActionVote",
+      "msg": "VOTE.INVALID_ACTION"
+    },
+    {
+      "code": 6007,
+      "name": "InvalidTransferBack",
+      "msg": "TRANSFER_BACK.INVALID"
+    }
+  ],
+  "metadata": {
+    "address": "9RgWo49pJ9pD24QkBMFTJ1J6RQdHbLoTa4J65V3n8eKm"
+  }
+}
