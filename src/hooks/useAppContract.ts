@@ -1,10 +1,16 @@
 import { useConnection, useAnchorWallet } from "@solana/wallet-adapter-react";
 import * as anchor from "@project-serum/anchor";
-import { FC, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import idl from "~/src/configs/funding_block.json";
 
 const PROGRAM_ID = new anchor.web3.PublicKey(
   `9RgWo49pJ9pD24QkBMFTJ1J6RQdHbLoTa4J65V3n8eKm`
+);
+const programWallet = new anchor.web3.PublicKey(
+  "DTijKdweRy1GNVAGp8ZFvt15qqytd29wDPNndPQ1yJiY"
+);
+const mint = new anchor.web3.PublicKey(
+  "prjctRCEC7Pu5ryxvpW7Z5EfdbJN7puFfMcXdgheRGc"
 );
 
 export const useAppContract = () => {
@@ -35,7 +41,6 @@ export const useAppContract = () => {
     if (!wallet || !program) {
       return;
     }
-
     const questAccount = anchor.web3.Keypair.generate();
     const [funderState, bump] = await anchor.web3.PublicKey.findProgramAddress(
       [
@@ -43,27 +48,17 @@ export const useAppContract = () => {
         wallet.publicKey.toBuffer(),
         questAccount.publicKey.toBuffer(),
       ],
-      new anchor.web3.PublicKey("9RgWo49pJ9pD24QkBMFTJ1J6RQdHbLoTa4J65V3n8eKm")
-    );
-
-    const programWallet = new anchor.web3.PublicKey(
-      "DTijKdweRy1GNVAGp8ZFvt15qqytd29wDPNndPQ1yJiY"
-    );
-
-    const mint = new anchor.web3.PublicKey(
-      "prjctRCEC7Pu5ryxvpW7Z5EfdbJN7puFfMcXdgheRGc"
+      PROGRAM_ID
     );
 
     const programWalletToken = await anchor.utils.token.associatedAddress({
       mint: mint,
       owner: programWallet,
     });
-
     const userToken = await anchor.utils.token.associatedAddress({
       mint: mint,
       owner: wallet.publicKey,
     });
-
     const tx = await program.methods
       .createQuest("cuc cut", new anchor.BN("1"), new anchor.BN("1671123600"))
       .accounts({
@@ -80,7 +75,6 @@ export const useAppContract = () => {
       })
       .signers([questAccount])
       .rpc();
-
     callback(tx);
   };
 
